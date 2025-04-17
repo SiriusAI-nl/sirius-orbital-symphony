@@ -112,15 +112,15 @@ Next, I plan to investigate user demographics and then identify the major brands
           <Sidebar className="border-r border-border">
             <SidebarContent>
               <SidebarGroup>
-                <SidebarGroupLabel>Data Retrieval</SidebarGroupLabel>
+                <SidebarGroupLabel className="text-lg font-medium">Data Retrieval</SidebarGroupLabel>
                 <Collapsible 
                   open={openSections.dataRetrieval}
                   onOpenChange={() => toggleSection('dataRetrieval')}
-                  className="group hover:open w-full"
+                  className="hover:open w-full"
                 >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span>Data Sources</span>
-                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                    <span className="font-medium">Data Sources</span>
+                    <ChevronDown className="h-4 w-4 transition-transform" />
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <SidebarMenu>
@@ -148,15 +148,15 @@ Next, I plan to investigate user demographics and then identify the major brands
               </SidebarGroup>
               
               <SidebarGroup>
-                <SidebarGroupLabel>Data Analysis</SidebarGroupLabel>
+                <SidebarGroupLabel className="text-lg font-medium">Data Analysis</SidebarGroupLabel>
                 <Collapsible 
                   open={openSections.dataAnalysis}
                   onOpenChange={() => toggleSection('dataAnalysis')}
-                  className="group hover:open w-full"
+                  className="hover:open w-full"
                 >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span>Analysis Methods</span>
-                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                    <span className="font-medium">Analysis Methods</span>
+                    <ChevronDown className="h-4 w-4 transition-transform" />
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <SidebarMenu>
@@ -184,15 +184,15 @@ Next, I plan to investigate user demographics and then identify the major brands
               </SidebarGroup>
               
               <SidebarGroup>
-                <SidebarGroupLabel>Deep Research</SidebarGroupLabel>
+                <SidebarGroupLabel className="text-lg font-medium">Deep Research</SidebarGroupLabel>
                 <Collapsible 
                   open={openSections.deepResearch}
                   onOpenChange={() => toggleSection('deepResearch')}
-                  className="group hover:open w-full"
+                  className="hover:open w-full"
                 >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span>Research Methods</span>
-                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                    <span className="font-medium">Research Methods</span>
+                    <ChevronDown className="h-4 w-4 transition-transform" />
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <SidebarMenu>
@@ -208,15 +208,15 @@ Next, I plan to investigate user demographics and then identify the major brands
               </SidebarGroup>
               
               <SidebarGroup>
-                <SidebarGroupLabel>Reporting</SidebarGroupLabel>
+                <SidebarGroupLabel className="text-lg font-medium">Reporting</SidebarGroupLabel>
                 <Collapsible 
                   open={openSections.reporting}
                   onOpenChange={() => toggleSection('reporting')}
-                  className="group hover:open w-full"
+                  className="hover:open w-full"
                 >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span>Report Types</span>
-                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                    <span className="font-medium">Report Types</span>
+                    <ChevronDown className="h-4 w-4 transition-transform" />
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <SidebarMenu>

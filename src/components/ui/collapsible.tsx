@@ -25,7 +25,7 @@ const Collapsible = React.forwardRef<
     }
     
     // Only close on mouse leave if we're using hover functionality
-    if (hasHoverOpen && !isHovered && props.onOpenChange && !props.open) {
+    if (hasHoverOpen && !isHovered && props.onOpenChange) {
       props.onOpenChange(false)
     }
   }, [isHovered, props.onOpenChange, hasHoverOpen, props.open])
@@ -35,7 +35,6 @@ const Collapsible = React.forwardRef<
       ref={ref}
       className={cn(className)}
       {...props}
-      asChild={false}
     >
       <div
         ref={collapsibleRef}
