@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Command, CommandInput } from '@/components/ui/command';
+import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import {
   Sidebar,
@@ -180,14 +180,15 @@ Next, I plan to investigate user demographics and then identify the major brands
                   </div>
                 </div>
                 
-                <Command className="w-full max-w-lg bg-card/80 rounded-lg border border-border">
-                  <CommandInput 
+                <div className="w-full max-w-lg bg-card/80 rounded-lg border border-border flex items-center px-3">
+                  <Search className="h-4 w-4 shrink-0 opacity-50 mr-2" />
+                  <Input 
                     placeholder="Refine your search query..." 
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    className="h-10"
+                    className="h-10 bg-transparent border-none focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
-                </Command>
+                </div>
               </div>
               
               {isLoading ? (
