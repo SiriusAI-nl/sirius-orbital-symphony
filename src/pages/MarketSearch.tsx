@@ -57,7 +57,7 @@ const MarketSearch = () => {
                 <Sparkles className="w-5 h-5 text-sirius-400" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text">
-                Market Intelligence
+                Marketing Intelligence
               </h1>
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
                 Discover trends, analyze competitors, and find new opportunities with AI-powered market research
