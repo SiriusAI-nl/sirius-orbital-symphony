@@ -21,7 +21,6 @@ export default function Navbar() {
                 src="/lovable-uploads/9eeeee9c-9327-452d-8e0d-b3b5f2ca8792.png" 
                 alt="Sirius AI Logo" 
                 className="w-[16.8rem] h-[16.8rem] mr-4 filter brightness-125 saturate-150"
-                style={{ transform: 'scale(0.7)' }}
               />
               <span className="text-sirius-400 text-[0.525rem] tracking-wide -mt-3">Solutions</span>
             </Link>
