@@ -8,15 +8,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="/" className="flex items-center">
+            <a href="/" className="flex flex-col items-center">
               <img 
                 src="/lovable-uploads/9eeeee9c-9327-452d-8e0d-b3b5f2ca8792.png" 
                 alt="Sirius AI Logo" 
                 className="w-24 h-24 mr-4 filter brightness-125 saturate-150"
               />
-              <div className="flex flex-col justify-end">
-                <span className="text-sirius-400 text-[0.525rem] tracking-wide self-end">Solutions</span>
-              </div>
+              <span className="text-sirius-400 text-[0.525rem] tracking-wide">Solutions</span>
             </a>
           </div>
           <div className="hidden md:block">
