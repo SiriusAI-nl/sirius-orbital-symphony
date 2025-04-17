@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Menu } from 'lucide-react';
@@ -21,7 +20,8 @@ export default function Navbar() {
               <img 
                 src="/lovable-uploads/9eeeee9c-9327-452d-8e0d-b3b5f2ca8792.png" 
                 alt="Sirius AI Logo" 
-                className="w-24 h-24 mr-4 filter brightness-125 saturate-150"
+                className="w-[16.8rem] h-[16.8rem] mr-4 filter brightness-125 saturate-150"
+                style={{ transform: 'scale(0.7)' }}
               />
               <span className="text-sirius-400 text-[0.525rem] tracking-wide -mt-3">Solutions</span>
             </Link>
