@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, Layers, Book, FileText, Search, Sparkles, MessageSquare, Send, PlusCircle, ChevronDown } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -170,8 +169,8 @@ Next, I plan to investigate user demographics and then identify the major brands
       
       <div className="flex-1 flex pt-24 pb-4 px-4 space-x-4">
         <SidebarProvider defaultOpen={true}>
-          <Sidebar className="border-r border-border ml-4">
-            <ScrollArea className="h-[calc(100vh-10rem)]">
+          <Sidebar className="border-r border-border ml-4 h-[calc(100vh-12rem)]">
+            <ScrollArea className="h-full">
               <SidebarContent className="pt-4">
                 {menuItems.map((menuGroup, index) => (
                   <SidebarGroup key={index} className="mb-4">
@@ -263,7 +262,7 @@ Next, I plan to investigate user demographics and then identify the major brands
             
             <ResizablePanelGroup
               direction="horizontal"
-              className="flex-1 overflow-hidden"
+              className="h-[calc(100vh-12rem)] overflow-hidden"
             >
               <ResizablePanel 
                 defaultSize={40} 
