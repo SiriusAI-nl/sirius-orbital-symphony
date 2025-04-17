@@ -40,6 +40,7 @@ const Collapsible = React.forwardRef<
         ref={collapsibleRef}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        className="w-full"
       >
         {props.children}
       </div>

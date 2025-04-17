@@ -111,14 +111,18 @@ Next, I plan to investigate user demographics and then identify the major brands
         <SidebarProvider defaultOpen={true}>
           <Sidebar className="border-r border-border">
             <SidebarContent>
+              {/* Phase 1: Data Retrieval */}
               <SidebarGroup>
-                <SidebarGroupLabel className="text-lg font-medium">Data Retrieval</SidebarGroupLabel>
+                <div className="flex items-center mb-1">
+                  <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">1</div>
+                  <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Data Retrieval</SidebarGroupLabel>
+                </div>
                 <Collapsible 
                   open={openSections.dataRetrieval}
                   onOpenChange={() => toggleSection('dataRetrieval')}
                   className="hover:open w-full"
                 >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
                     <span className="font-medium">Data Sources</span>
                     <ChevronDown className="h-4 w-4 transition-transform" />
                   </CollapsibleTrigger>
@@ -147,14 +151,18 @@ Next, I plan to investigate user demographics and then identify the major brands
                 </Collapsible>
               </SidebarGroup>
               
+              {/* Phase 2: Data Analysis */}
               <SidebarGroup>
-                <SidebarGroupLabel className="text-lg font-medium">Data Analysis</SidebarGroupLabel>
+                <div className="flex items-center mb-1">
+                  <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">2</div>
+                  <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Data Analysis</SidebarGroupLabel>
+                </div>
                 <Collapsible 
                   open={openSections.dataAnalysis}
                   onOpenChange={() => toggleSection('dataAnalysis')}
                   className="hover:open w-full"
                 >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
                     <span className="font-medium">Analysis Methods</span>
                     <ChevronDown className="h-4 w-4 transition-transform" />
                   </CollapsibleTrigger>
@@ -183,14 +191,18 @@ Next, I plan to investigate user demographics and then identify the major brands
                 </Collapsible>
               </SidebarGroup>
               
+              {/* Phase 3: Deep Research */}
               <SidebarGroup>
-                <SidebarGroupLabel className="text-lg font-medium">Deep Research</SidebarGroupLabel>
+                <div className="flex items-center mb-1">
+                  <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">3</div>
+                  <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Deep Research</SidebarGroupLabel>
+                </div>
                 <Collapsible 
                   open={openSections.deepResearch}
                   onOpenChange={() => toggleSection('deepResearch')}
                   className="hover:open w-full"
                 >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
                     <span className="font-medium">Research Methods</span>
                     <ChevronDown className="h-4 w-4 transition-transform" />
                   </CollapsibleTrigger>
@@ -207,14 +219,18 @@ Next, I plan to investigate user demographics and then identify the major brands
                 </Collapsible>
               </SidebarGroup>
               
+              {/* Phase 4: Reporting */}
               <SidebarGroup>
-                <SidebarGroupLabel className="text-lg font-medium">Reporting</SidebarGroupLabel>
+                <div className="flex items-center mb-1">
+                  <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">4</div>
+                  <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Reporting</SidebarGroupLabel>
+                </div>
                 <Collapsible 
                   open={openSections.reporting}
                   onOpenChange={() => toggleSection('reporting')}
                   className="hover:open w-full"
                 >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
                     <span className="font-medium">Report Types</span>
                     <ChevronDown className="h-4 w-4 transition-transform" />
                   </CollapsibleTrigger>
