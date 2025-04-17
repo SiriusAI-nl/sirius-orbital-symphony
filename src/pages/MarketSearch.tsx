@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { SearchIcon, ArrowRightIcon, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -39,7 +38,6 @@ const MarketSearch = () => {
       
       <section className="flex-1 flex flex-col items-center justify-center py-12 px-4 relative z-10">
         <div className="max-w-3xl mx-auto w-full text-center relative">
-          {/* Create a fading edge image overlay */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -128,7 +126,7 @@ const MarketSearch = () => {
                   </div>
                 </div>
                 <div className="text-left">
-                  <h3 className="text-lg font-medium text-white">LLM research agents</h3>
+                  <h3 className="text-lg font-medium text-white">LLM research agents, specialised for marketing!</h3>
                   <p className="text-gray-300 mt-1">
                     Our advanced deep research agents do research that's unseen of all the way up to Ursa Minor. Our highly customised research & reasoning agents deliver insights tailored to your specific market needs. Yes really :-)
                   </p>
