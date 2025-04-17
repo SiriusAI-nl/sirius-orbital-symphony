@@ -20,10 +20,10 @@ export default function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="flex items-center space-x-4">
-              <a href="#features" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Features</a>
-              <a href="#solutions" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Solutions</a>
-              <a href="#workflow" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Workflow</a>
               <a href="#market-research" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Market Research</a>
+              <a href="#solutions" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Multi-Agent Orchestration</a>
+              <a href="#workflow" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Workflow Automation</a>
+              <a href="#features" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Features</a>
               <a href="#pricing" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Pricing</a>
               <Button className="bg-sirius-500 hover:bg-sirius-600 text-white text-sm px-3 py-1.5">Get Started</Button>
             </div>

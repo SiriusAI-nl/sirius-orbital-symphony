@@ -1,15 +1,15 @@
 import React from 'react';
 import { 
-  BrainCircuitIcon, 
-  CpuIcon, 
-  LineChartIcon, 
-  MessagesSquareIcon, 
-  RocketIcon, 
-  ShieldCheckIcon, 
-  WandSparklesIcon,
-  ArrowRightIcon,
+  SearchIcon,
   BarChartIcon,
-  SearchIcon
+  RocketIcon, 
+  CpuIcon,
+  ArrowRightIcon,
+  BrainCircuitIcon, 
+  LineChartIcon, 
+  MessagesSquareIcon,
+  ShieldCheckIcon,
+  WandSparklesIcon
 } from 'lucide-react';
 
 import Navbar from '@/components/Navbar';
@@ -27,31 +27,84 @@ const Index = () => {
       <ConstellationBackground />
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-8 md:pt-32 md:pb-12 relative">
+      {/* Market Research Section - Now First and Most Prominent */}
+      <section id="market-research" className="py-12 md:py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight gradient-text">
-              Multi-Agent Orchestration That's Simply Out of This World
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-6">
-              Sirius AI helps you automate complex workflows with intelligent agents that work together in perfect harmony.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button className="btn-primary flex items-center justify-center">
-                <span>Get Started Free</span>
+          <div className="md:flex md:items-center md:space-x-12">
+            <div className="md:w-1/2 glass-card p-4 mb-10 md:mb-0">
+              <div className="aspect-w-16 aspect-h-9 relative overflow-hidden rounded-lg">
+                <div className="absolute inset-0 flex items-center justify-center bg-space-800/50">
+                  <div className="grid grid-cols-2 gap-4 p-4 w-full h-full">
+                    <div className="glass-card p-3 flex flex-col items-center justify-center">
+                      <SearchIcon className="w-8 h-8 text-sirius-400 mb-2" />
+                      <div className="h-2 bg-sirius-500/20 w-2/3 rounded-full mb-1"></div>
+                      <div className="h-2 bg-sirius-500/20 w-1/2 rounded-full"></div>
+                    </div>
+                    <div className="glass-card p-3 flex items-center justify-center">
+                      <div className="w-full h-24 bg-sirius-500/10 rounded-lg"></div>
+                    </div>
+                    <div className="glass-card p-3 flex items-center justify-center col-span-2">
+                      <div className="grid grid-cols-3 gap-2 w-full">
+                        <div className="h-12 bg-sirius-500/20 rounded-lg"></div>
+                        <div className="h-12 bg-sirius-500/30 rounded-lg"></div>
+                        <div className="h-12 bg-sirius-500/10 rounded-lg"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-1/2">
+              <div className="inline-block p-2 bg-sirius-500/10 rounded-lg mb-3">
+                <BarChartIcon className="w-6 h-6 text-sirius-400" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Market Research That's Light-Years Ahead</h2>
+              <p className="text-lg text-gray-300 mb-6">
+                Our AI-powered market research tools help you navigate the galaxy of data to discover actionable insights about your market, competitors, and customers.
+              </p>
+              <p className="text-lg text-gray-300 mb-8">
+                Deploy intelligent agents to collect, analyze, and visualize market trends, sentiment analysis, and competitive intelligence with accuracy that would make Deep Thought jealous.
+              </p>
+              <Button className="btn-primary flex items-center">
+                <span>Explore Market Research</span>
                 <ArrowRightIcon className="w-4 h-4 ml-2" />
               </Button>
-              <Button variant="outline" className="btn-outline flex items-center justify-center">
-                <span>Book a Demo</span>
-              </Button>
-            </div>
-            <div className="mt-6 glass-card py-2 px-3 inline-block">
-              <p className="text-xs text-gray-300">
-                Trusted by organizations across the galaxy <span className="text-sirius-400 font-semibold">*mostly on Earth</span>
-              </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Multi-Agent Orchestration Section - Now Second */}
+      <section id="solutions" className="py-12 md:py-16 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="md:flex md:items-center md:space-x-12">
+            <div className="md:w-1/2 mb-10 md:mb-0">
+              <div className="inline-block p-2 bg-sirius-500/10 rounded-lg mb-3">
+                <CpuIcon className="w-6 h-6 text-sirius-400" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Orchestrate Multiple Agents Like a Cosmic Symphony</h2>
+              <p className="text-lg text-gray-300 mb-6">
+                Our platform enables seamless coordination between different AI agents, each specialized for specific tasks. Together, they form a powerful system that can handle complex workflows.
+              </p>
+              <p className="text-lg text-gray-300 mb-8">
+                Whether you need data analysis, content generation, decision making, or all of the above, our multi-agent system works in harmony to deliver results that are light-years ahead of single-agent solutions.
+              </p>
+              <Button className="btn-primary flex items-center space-x-2">
+                <span>Explore Solutions</span>
+                <ArrowRightIcon className="w-4 h-4" />
+              </Button>
+            </div>
+            <div className="md:w-1/2 glass-card p-4">
+              <MultiAgentDiagram />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Workflow Automation Section - Now Third */}
+      <section id="workflow" className="py-12 md:py-16 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <WorkflowAutomation />
         </div>
       </section>
       
@@ -99,87 +152,6 @@ const Index = () => {
               description="Keep your data safe with enterprise-grade security features and compliance controls."
               icon={<ShieldCheckIcon className="w-5 h-5" />}
             />
-          </div>
-        </div>
-      </section>
-      
-      {/* Multi-Agent Visualization Section */}
-      <section id="solutions" className="py-12 md:py-16 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="md:flex md:items-center md:space-x-12">
-            <div className="md:w-1/2 mb-10 md:mb-0">
-              <div className="inline-block p-2 bg-sirius-500/10 rounded-lg mb-3">
-                <BarChartIcon className="w-6 h-6 text-sirius-400" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Orchestrate Multiple Agents Like a Cosmic Symphony</h2>
-              <p className="text-lg text-gray-300 mb-6">
-                Our platform enables seamless coordination between different AI agents, each specialized for specific tasks. Together, they form a powerful system that can handle complex workflows.
-              </p>
-              <p className="text-lg text-gray-300 mb-8">
-                Whether you need data analysis, content generation, decision making, or all of the above, our multi-agent system works in harmony to deliver results that are light-years ahead of single-agent solutions.
-              </p>
-              <button className="btn-primary flex items-center space-x-2">
-                <span>Explore Solutions</span>
-                <ArrowRightIcon className="w-4 h-4" />
-              </button>
-            </div>
-            <div className="md:w-1/2 glass-card p-4">
-              <MultiAgentDiagram />
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Workflow Section */}
-      <section id="workflow" className="py-12 md:py-16 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <WorkflowAutomation />
-        </div>
-      </section>
-      
-      {/* Market Research Section */}
-      <section id="market-research" className="py-12 md:py-16 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="md:flex md:items-center md:space-x-12">
-            <div className="md:w-1/2 glass-card p-4 mb-10 md:mb-0">
-              <div className="aspect-w-16 aspect-h-9 relative overflow-hidden rounded-lg">
-                <div className="absolute inset-0 flex items-center justify-center bg-space-800/50">
-                  <div className="grid grid-cols-2 gap-4 p-4 w-full h-full">
-                    <div className="glass-card p-3 flex flex-col items-center justify-center">
-                      <SearchIcon className="w-8 h-8 text-sirius-400 mb-2" />
-                      <div className="h-2 bg-sirius-500/20 w-2/3 rounded-full mb-1"></div>
-                      <div className="h-2 bg-sirius-500/20 w-1/2 rounded-full"></div>
-                    </div>
-                    <div className="glass-card p-3 flex items-center justify-center">
-                      <div className="w-full h-24 bg-sirius-500/10 rounded-lg"></div>
-                    </div>
-                    <div className="glass-card p-3 flex items-center justify-center col-span-2">
-                      <div className="grid grid-cols-3 gap-2 w-full">
-                        <div className="h-12 bg-sirius-500/20 rounded-lg"></div>
-                        <div className="h-12 bg-sirius-500/30 rounded-lg"></div>
-                        <div className="h-12 bg-sirius-500/10 rounded-lg"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="md:w-1/2">
-              <div className="inline-block p-2 bg-sirius-500/10 rounded-lg mb-3">
-                <SearchIcon className="w-6 h-6 text-sirius-400" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Market Research That's Light-Years Ahead</h2>
-              <p className="text-lg text-gray-300 mb-6">
-                Our AI-powered market research tools help you navigate the galaxy of data to discover actionable insights about your market, competitors, and customers.
-              </p>
-              <p className="text-lg text-gray-300 mb-8">
-                Deploy intelligent agents to collect, analyze, and visualize market trends, sentiment analysis, and competitive intelligence with accuracy that would make Deep Thought jealous.
-              </p>
-              <Button className="btn-primary flex items-center">
-                <span>Explore Market Research</span>
-                <ArrowRightIcon className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
           </div>
         </div>
       </section>
