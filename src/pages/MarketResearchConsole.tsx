@@ -166,10 +166,10 @@ Next, I plan to investigate user demographics and then identify the major brands
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
       
-      <div className="flex-1 flex pt-16">
+      <div className="flex-1 flex pt-16 space-x-4">
         <SidebarProvider defaultOpen={true}>
-          <Sidebar className="border-r border-border">
-            <ScrollArea className="h-[calc(100vh-8rem)]">
+          <Sidebar className="border-r border-border ml-4">
+            <ScrollArea className="h-[calc(100vh-10rem)]">
               <SidebarContent className="pt-4">
                 {menuItems.map((menuGroup, index) => (
                   <SidebarGroup key={index} className="mb-4">
@@ -229,7 +229,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                 ))}
               </SidebarContent>
               
-              <SidebarFooter className="mt-auto p-4 border-t border-border">
+              <SidebarFooter className="mt-auto p-4 border-t border-border sticky bottom-0 bg-sidebar">
                 <div className="flex items-center justify-center">
                   <Button variant="outline" size="sm" className="w-full">
                     <PlusCircle className="mr-2 h-4 w-4" />
@@ -240,7 +240,7 @@ Next, I plan to investigate user demographics and then identify the major brands
             </ScrollArea>
           </Sidebar>
           
-          <div className="flex-1 overflow-hidden p-4 flex flex-col">
+          <div className="flex-1 overflow-hidden pr-4">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-4">
                 <SidebarTrigger className="lg:hidden" />
