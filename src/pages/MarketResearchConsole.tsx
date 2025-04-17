@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, PieChart, Layers, Book, FileText, Search, Sparkles, ChevronDown, MessageSquare } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -32,7 +31,6 @@ const MarketResearchConsole = () => {
   const [activeSection, setActiveSection] = useState('keywords');
   const [websites, setWebsites] = useState<string[]>([]);
   const [researchResults, setResearchResults] = useState<string>('');
-  // Track open/closed state of collapsible menu sections
   const [openSections, setOpenSections] = useState({
     dataRetrieval: true,
     dataAnalysis: true,
@@ -40,7 +38,6 @@ const MarketResearchConsole = () => {
     reporting: true
   });
 
-  // Chat history data
   const [chatHistory] = useState([
     { id: 1, title: "Gaming market trends", date: "2025-04-16" },
     { id: 2, title: "AI software competitors", date: "2025-04-12" },
@@ -49,12 +46,10 @@ const MarketResearchConsole = () => {
     { id: 5, title: "Smart home adoption rates", date: "2025-03-28" },
   ]);
 
-  // Get the query from the location state
   useEffect(() => {
     if (location.state?.query) {
       setQuery(location.state.query);
       
-      // Simulate loading
       setTimeout(() => {
         setIsLoading(false);
         generateFakeWebsites();
@@ -105,7 +100,6 @@ Next, I plan to investigate user demographics and then identify the major brands
     toast.info(`Switching to ${section} analysis`);
   };
 
-  // Toggle section open/closed state
   const toggleSection = (section: string) => {
     setOpenSections(prev => ({
       ...prev,
@@ -117,15 +111,13 @@ Next, I plan to investigate user demographics and then identify the major brands
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
       
-      <div className="flex-1 flex pt-24"> {/* Added padding-top to move content below header */}
+      <div className="flex-1 flex pt-24">
         <SidebarProvider defaultOpen={true}>
-          <Sidebar className="border-r border-border">
+          <Sidebar className="border-r border-border mt-16">
             <SidebarContent>
-              {/* Research Pipeline Section */}
               <SidebarGroup>
                 <SidebarGroupLabel className="text-lg font-medium text-sirius-300 px-3 pb-2">Research Pipeline</SidebarGroupLabel>
               
-                {/* Phase 1: Data Retrieval */}
                 <SidebarGroup>
                   <div className="flex items-center mb-1">
                     <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">1</div>
@@ -165,7 +157,6 @@ Next, I plan to investigate user demographics and then identify the major brands
                   </Collapsible>
                 </SidebarGroup>
                 
-                {/* Phase 2: Data Analysis */}
                 <SidebarGroup>
                   <div className="flex items-center mb-1">
                     <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">2</div>
@@ -205,7 +196,6 @@ Next, I plan to investigate user demographics and then identify the major brands
                   </Collapsible>
                 </SidebarGroup>
                 
-                {/* Phase 3: Deep Research */}
                 <SidebarGroup>
                   <div className="flex items-center mb-1">
                     <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">3</div>
@@ -233,7 +223,6 @@ Next, I plan to investigate user demographics and then identify the major brands
                   </Collapsible>
                 </SidebarGroup>
                 
-                {/* Phase 4: Reporting */}
                 <SidebarGroup>
                   <div className="flex items-center mb-1">
                     <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">4</div>
@@ -262,10 +251,8 @@ Next, I plan to investigate user demographics and then identify the major brands
                 </SidebarGroup>
               </SidebarGroup>
               
-              {/* Separator between Research Pipeline and Chat History */}
               <SidebarSeparator className="my-4" />
               
-              {/* Chat History Section */}
               <SidebarGroup>
                 <SidebarGroupLabel className="text-lg font-medium text-sirius-300 px-3 pb-2">Chat History</SidebarGroupLabel>
                 <div className="px-3">
