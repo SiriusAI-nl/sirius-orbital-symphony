@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, PieChart, Layers, Book, FileText, Search, Sparkles, ChevronDown, MessageSquare } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -129,7 +130,10 @@ Next, I plan to investigate user demographics and then identify the major brands
                     className="w-full"
                   >
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                      <span className="font-medium">Data Sources</span>
+                      <span className="font-medium flex items-center">
+                        <Database className="h-4 w-4 mr-2" />
+                        Data Retrieval
+                      </span>
                       <ChevronDown className="h-4 w-4 transition-transform" />
                     </CollapsibleTrigger>
                     <CollapsibleContent>
@@ -168,7 +172,10 @@ Next, I plan to investigate user demographics and then identify the major brands
                     className="w-full"
                   >
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                      <span className="font-medium">Analysis Methods</span>
+                      <span className="font-medium flex items-center">
+                        <BarChart2 className="h-4 w-4 mr-2" />
+                        Data Analysis
+                      </span>
                       <ChevronDown className="h-4 w-4 transition-transform" />
                     </CollapsibleTrigger>
                     <CollapsibleContent>
@@ -207,7 +214,10 @@ Next, I plan to investigate user demographics and then identify the major brands
                     className="w-full"
                   >
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                      <span className="font-medium">Research Methods</span>
+                      <span className="font-medium flex items-center">
+                        <Layers className="h-4 w-4 mr-2" />
+                        Deep Research
+                      </span>
                       <ChevronDown className="h-4 w-4 transition-transform" />
                     </CollapsibleTrigger>
                     <CollapsibleContent>
@@ -234,7 +244,10 @@ Next, I plan to investigate user demographics and then identify the major brands
                     className="w-full"
                   >
                     <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                      <span className="font-medium">Report Types</span>
+                      <span className="font-medium flex items-center">
+                        <FileText className="h-4 w-4 mr-2" />
+                        Reporting
+                      </span>
                       <ChevronDown className="h-4 w-4 transition-transform" />
                     </CollapsibleTrigger>
                     <CollapsibleContent>
