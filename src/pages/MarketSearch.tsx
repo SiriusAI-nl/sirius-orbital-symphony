@@ -115,9 +115,9 @@ const MarketSearch = () => {
                   </div>
                 </div>
                 <div className="text-left">
-                  <h3 className="text-lg font-medium text-white">AI-powered analysis</h3>
+                  <h3 className="text-lg font-medium text-white">LLM research agents</h3>
                   <p className="text-gray-300 mt-1">
-                    Our advanced algorithms analyze thousands of data points in real-time to deliver insights tailored to your specific market research needs.
+                    Our advanced deep research agents do research that's unseen of all the way up to Ursa Minor. Our highly customised research & reasoning agents deliver insights tailored to your specific market needs. Yes really :-)
                   </p>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { GithubIcon, TwitterIcon, LinkedinIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
@@ -36,10 +37,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-medium mb-4">Product</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#features" className="text-gray-400 hover:text-white transition-colors">Features</a></li>
-              <li><a href="#solutions" className="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
-              <li><a href="#workflow" className="text-gray-400 hover:text-white transition-colors">Workflow</a></li>
-              <li><a href="#pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+              <li><Link to="/features" className="text-gray-400 hover:text-white transition-colors">Features</Link></li>
+              <li><Link to="/market-research" className="text-gray-400 hover:text-white transition-colors">Market Research</Link></li>
+              <li><Link to="/workflows" className="text-gray-400 hover:text-white transition-colors">Workflow</Link></li>
+              <li><Link to="/pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</Link></li>
             </ul>
           </div>
           
