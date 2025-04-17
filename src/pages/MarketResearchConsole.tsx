@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, PieChart, Layers, Book, FileText, Search, Sparkles } from 'lucide-react';
+import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, PieChart, Layers, Book, FileText, Search, Sparkles, ChevronDown } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import {
   Sidebar,
   SidebarProvider,
@@ -30,6 +31,13 @@ const MarketResearchConsole = () => {
   const [activeSection, setActiveSection] = useState('keywords');
   const [websites, setWebsites] = useState<string[]>([]);
   const [researchResults, setResearchResults] = useState<string>('');
+  // Track open/closed state of collapsible menu sections
+  const [openSections, setOpenSections] = useState({
+    dataRetrieval: true,
+    dataAnalysis: true,
+    deepResearch: true,
+    reporting: true
+  });
 
   // Get the query from the location state
   useEffect(() => {
@@ -87,6 +95,14 @@ Next, I plan to investigate user demographics and then identify the major brands
     toast.info(`Switching to ${section} analysis`);
   };
 
+  // Toggle section open/closed state
+  const toggleSection = (section: string) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
@@ -97,74 +113,122 @@ Next, I plan to investigate user demographics and then identify the major brands
             <SidebarContent>
               <SidebarGroup>
                 <SidebarGroupLabel>Data Retrieval</SidebarGroupLabel>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Keywords" isActive={activeSection === 'keywords'} onClick={() => handleSectionChange('keywords')}>
-                      <Activity className="mr-2" />
-                      <span>Keywords</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Competition" isActive={activeSection === 'competition'} onClick={() => handleSectionChange('competition')}>
-                      <Users className="mr-2" />
-                      <span>Competition</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Trends" isActive={activeSection === 'trends'} onClick={() => handleSectionChange('trends')}>
-                      <TrendingUp className="mr-2" />
-                      <span>Trends</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
+                <Collapsible 
+                  open={openSections.dataRetrieval}
+                  onOpenChange={() => toggleSection('dataRetrieval')}
+                  className="group hover:open w-full"
+                >
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                    <span>Data Sources</span>
+                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="Keywords" isActive={activeSection === 'keywords'} onClick={() => handleSectionChange('keywords')}>
+                          <Activity className="mr-2" />
+                          <span>Keywords</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="Competition" isActive={activeSection === 'competition'} onClick={() => handleSectionChange('competition')}>
+                          <Users className="mr-2" />
+                          <span>Competition</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="Trends" isActive={activeSection === 'trends'} onClick={() => handleSectionChange('trends')}>
+                          <TrendingUp className="mr-2" />
+                          <span>Trends</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </CollapsibleContent>
+                </Collapsible>
               </SidebarGroup>
               
               <SidebarGroup>
                 <SidebarGroupLabel>Data Analysis</SidebarGroupLabel>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Keyword Analysis" isActive={activeSection === 'keyword-analysis'} onClick={() => handleSectionChange('keyword-analysis')}>
-                      <PieChart className="mr-2" />
-                      <span>Keyword Analysis</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Competitor Analysis" isActive={activeSection === 'competitor-analysis'} onClick={() => handleSectionChange('competitor-analysis')}>
-                      <BarChart2 className="mr-2" />
-                      <span>Competitor Analysis</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Trend Analysis" isActive={activeSection === 'trend-analysis'} onClick={() => handleSectionChange('trend-analysis')}>
-                      <TrendingUp className="mr-2" />
-                      <span>Trend Analysis</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
+                <Collapsible 
+                  open={openSections.dataAnalysis}
+                  onOpenChange={() => toggleSection('dataAnalysis')}
+                  className="group hover:open w-full"
+                >
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                    <span>Analysis Methods</span>
+                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="Keyword Analysis" isActive={activeSection === 'keyword-analysis'} onClick={() => handleSectionChange('keyword-analysis')}>
+                          <PieChart className="mr-2" />
+                          <span>Keyword Analysis</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="Competitor Analysis" isActive={activeSection === 'competitor-analysis'} onClick={() => handleSectionChange('competitor-analysis')}>
+                          <BarChart2 className="mr-2" />
+                          <span>Competitor Analysis</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="Trend Analysis" isActive={activeSection === 'trend-analysis'} onClick={() => handleSectionChange('trend-analysis')}>
+                          <TrendingUp className="mr-2" />
+                          <span>Trend Analysis</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </CollapsibleContent>
+                </Collapsible>
               </SidebarGroup>
               
               <SidebarGroup>
                 <SidebarGroupLabel>Deep Research</SidebarGroupLabel>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Deep Reasoning" isActive={activeSection === 'deep-reasoning'} onClick={() => handleSectionChange('deep-reasoning')}>
-                      <Layers className="mr-2" />
-                      <span>Deep Reasoning</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
+                <Collapsible 
+                  open={openSections.deepResearch}
+                  onOpenChange={() => toggleSection('deepResearch')}
+                  className="group hover:open w-full"
+                >
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                    <span>Research Methods</span>
+                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="Deep Reasoning" isActive={activeSection === 'deep-reasoning'} onClick={() => handleSectionChange('deep-reasoning')}>
+                          <Layers className="mr-2" />
+                          <span>Deep Reasoning</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </CollapsibleContent>
+                </Collapsible>
               </SidebarGroup>
               
               <SidebarGroup>
                 <SidebarGroupLabel>Reporting</SidebarGroupLabel>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Market Research Reports" isActive={activeSection === 'market-research-reports'} onClick={() => handleSectionChange('market-research-reports')}>
-                      <FileText className="mr-2" />
-                      <span>Market Research Reports</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
+                <Collapsible 
+                  open={openSections.reporting}
+                  onOpenChange={() => toggleSection('reporting')}
+                  className="group hover:open w-full"
+                >
+                  <CollapsibleTrigger className="flex items-center justify-between w-full px-2 py-1 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                    <span>Report Types</span>
+                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenu>
+                      <SidebarMenuItem>
+                        <SidebarMenuButton tooltip="Market Research Reports" isActive={activeSection === 'market-research-reports'} onClick={() => handleSectionChange('market-research-reports')}>
+                          <FileText className="mr-2" />
+                          <span>Market Research Reports</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    </SidebarMenu>
+                  </CollapsibleContent>
+                </Collapsible>
               </SidebarGroup>
             </SidebarContent>
           </Sidebar>
