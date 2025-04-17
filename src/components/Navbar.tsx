@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -15,9 +14,8 @@ export default function Navbar() {
                 alt="Sirius AI Logo" 
                 className="w-24 h-24 mr-4 filter brightness-125 saturate-150"
               />
-              <div className="flex flex-col items-start">
-                <span className="text-white font-black text-lg tracking-tight leading-none">Cybernetic</span>
-                <span className="text-sirius-400 text-[0.525rem] tracking-wide">Solutions</span>
+              <div className="flex flex-col justify-end">
+                <span className="text-sirius-400 text-[0.525rem] tracking-wide self-end">Solutions</span>
               </div>
             </a>
           </div>
@@ -43,4 +41,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
