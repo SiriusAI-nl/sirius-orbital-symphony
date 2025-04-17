@@ -17,7 +17,7 @@ export default function Navbar() {
               />
               <div className="flex flex-col items-start">
                 <span className="text-white font-black text-lg tracking-tight leading-none">Cybernetic</span>
-                <span className="text-sirius-400 text-[0.375rem] tracking-wide">Solutions</span>
+                <span className="text-sirius-400 text-[0.525rem] tracking-wide">Solutions</span>
               </div>
             </a>
           </div>
