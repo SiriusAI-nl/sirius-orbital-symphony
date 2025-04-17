@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { SearchIcon, ArrowRightIcon, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -41,7 +42,7 @@ const MarketSearch = () => {
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: `url('/lovable-uploads/438a53a5-726d-41c8-b80a-ccfa98ae3aeb.png')`,
+              backgroundImage: `url('/lovable-uploads/b775e002-193c-458a-bf27-23f0bda7efc5.png')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               opacity: 0.7,
