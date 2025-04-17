@@ -118,24 +118,24 @@ const MultiAgentDiagram: React.FC = () => {
 
   return (
     <div className="relative w-full h-[450px] md:h-[550px]">
-      {/* Central orchestrator - increased by 50% from 90 to 135 */}
-      <NeuralNode x={50} y={50} label="Orchestrator" size={135} className="z-20" color={nodeColors.orchestrator} />
+      {/* Central orchestrator */}
+      <NeuralNode x={50} y={50} label="Orchestrator" size={90} className="z-20" color={nodeColors.orchestrator} />
       
-      {/* Surrounding agents - increased by 50% from 70 to 105 and adjusted positions for more repulsion */}
-      <NeuralNode x={30} y={30} label="Data Agent" size={105} color={nodeColors.data} />
-      <NeuralNode x={70} y={30} label="Planning Agent" size={105} color={nodeColors.planning} />
-      <NeuralNode x={30} y={70} label="Reasoning Agent" size={105} color={nodeColors.reasoning} />
-      <NeuralNode x={70} y={70} label="Output Agent" size={105} color={nodeColors.output} />
-      <NeuralNode x={20} y={50} label="Memory Agent" size={105} color={nodeColors.memory} />
-      <NeuralNode x={80} y={50} label="Knowledge Agent" size={105} color={nodeColors.knowledge} />
+      {/* Surrounding agents */}
+      <NeuralNode x={30} y={30} label="Data Agent" size={70} color={nodeColors.data} />
+      <NeuralNode x={70} y={30} label="Planning Agent" size={70} color={nodeColors.planning} />
+      <NeuralNode x={30} y={70} label="Reasoning Agent" size={70} color={nodeColors.reasoning} />
+      <NeuralNode x={70} y={70} label="Output Agent" size={70} color={nodeColors.output} />
+      <NeuralNode x={20} y={50} label="Memory Agent" size={70} color={nodeColors.memory} />
+      <NeuralNode x={80} y={50} label="Knowledge Agent" size={70} color={nodeColors.knowledge} />
       
-      {/* Additional nodes for neural network effect - increased by 50% from 55 to 83 and adjusted positions */}
-      <NeuralNode x={35} y={20} label="Parser" size={83} color={nodeColors.data} />
-      <NeuralNode x={65} y={20} label="Validator" size={83} color={nodeColors.planning} />
-      <NeuralNode x={15} y={35} label="Cache" size={83} color={nodeColors.memory} />
-      <NeuralNode x={85} y={35} label="Search" size={83} color={nodeColors.knowledge} />
-      <NeuralNode x={35} y={80} label="Logic" size={83} color={nodeColors.reasoning} />
-      <NeuralNode x={65} y={80} label="Format" size={83} color={nodeColors.output} />
+      {/* Additional nodes for neural network effect */}
+      <NeuralNode x={35} y={20} label="Parser" size={55} color={nodeColors.data} />
+      <NeuralNode x={65} y={20} label="Validator" size={55} color={nodeColors.planning} />
+      <NeuralNode x={15} y={35} label="Cache" size={55} color={nodeColors.memory} />
+      <NeuralNode x={85} y={35} label="Search" size={55} color={nodeColors.knowledge} />
+      <NeuralNode x={35} y={80} label="Logic" size={55} color={nodeColors.reasoning} />
+      <NeuralNode x={65} y={80} label="Format" size={55} color={nodeColors.output} />
       
       {/* Neural connections - core connections */}
       <NeuralConnection startX={50} startY={50} endX={30} endY={30} animated pulseColor={pulseColors.data} width={3} />
