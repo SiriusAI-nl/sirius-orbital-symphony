@@ -10,6 +10,16 @@ import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
   Sidebar,
   SidebarProvider,
   SidebarContent,
@@ -22,7 +32,8 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarTrigger,
-  SidebarSeparator
+  SidebarSeparator,
+  SidebarFooter,
 } from '@/components/ui/sidebar';
 
 const MarketResearchConsole = () => {
@@ -47,6 +58,30 @@ const MarketResearchConsole = () => {
   ]);
 
   const [messages, setMessages] = useState<{type: 'user' | 'assistant', content: string, timestamp: Date}[]>([]);
+
+  const menuItems = [
+    { 
+      title: 'Research Pipeline', 
+      icon: <Activity className="mr-2 h-5 w-5" />,
+      items: [
+        { label: 'Keywords', icon: <Activity className="mr-2 h-4 w-4" /> },
+        { label: 'Competition', icon: <Users className="mr-2 h-4 w-4" /> },
+        { label: 'Trends', icon: <TrendingUp className="mr-2 h-4 w-4" /> },
+        { label: 'Analysis', icon: <BarChart2 className="mr-2 h-4 w-4" /> },
+        { label: 'Deep Research', icon: <Layers className="mr-2 h-4 w-4" /> },
+        { label: 'Reports', icon: <FileText className="mr-2 h-4 w-4" /> }
+      ]
+    },
+    {
+      title: 'Chat History',
+      icon: <MessageSquare className="mr-2 h-5 w-5" />,
+      items: chatHistory.map(chat => ({
+        label: chat.title,
+        date: chat.date,
+        id: chat.id
+      }))
+    }
+  ];
 
   useEffect(() => {
     if (location.state?.query) {
@@ -131,15 +166,13 @@ Next, I plan to investigate user demographics and then identify the major brands
     }, 2000);
   };
 
-  const toggleSection = (section: string) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }));
-  };
-
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
+  const handleSessionSelect = (id: number) => {
+    setActiveSession(id);
+    // In a real app, you'd load the conversation history for this session
   };
 
   return (
@@ -149,99 +182,71 @@ Next, I plan to investigate user demographics and then identify the major brands
       <div className="flex-1 flex pt-16">
         <SidebarProvider defaultOpen={true}>
           <Sidebar className="border-r border-border">
-            <SidebarContent className="pt-8">
-              <SidebarGroup>
-                <Collapsible 
-                  open={openSections.pipeline}
-                  onOpenChange={() => toggleSection('pipeline')}
-                  className="w-full"
-                >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span className="font-medium">Research Pipeline</span>
-                    <ChevronDown className="h-4 w-4 transition-transform" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <SidebarMenu>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Keywords">
-                          <Activity className="mr-2" />
-                          <span>Keywords</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Competition">
-                          <Users className="mr-2" />
-                          <span>Competition</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Trends">
-                          <TrendingUp className="mr-2" />
-                          <span>Trends</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Analysis">
-                          <BarChart2 className="mr-2" />
-                          <span>Analysis</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Deep Research">
-                          <Layers className="mr-2" />
-                          <span>Deep Research</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Reports">
-                          <FileText className="mr-2" />
-                          <span>Reports</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    </SidebarMenu>
-                  </CollapsibleContent>
-                </Collapsible>
-              </SidebarGroup>
+            <ScrollArea className="h-[calc(100vh-4rem)]">
+              <SidebarContent className="pt-8">
+                {menuItems.map((menuGroup, index) => (
+                  <SidebarGroup key={index} className="mb-4">
+                    <Collapsible 
+                      open={openSections[menuGroup.title === 'Research Pipeline' ? 'pipeline' : 'history']}
+                      onOpenChange={() => setOpenSections(prev => ({
+                        ...prev,
+                        [menuGroup.title === 'Research Pipeline' ? 'pipeline' : 'history']: 
+                          !prev[menuGroup.title === 'Research Pipeline' ? 'pipeline' : 'history']
+                      }))}
+                      className="w-full"
+                    >
+                      <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-3 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                        <div className="flex items-center">
+                          {menuGroup.icon}
+                          <span className="font-medium">{menuGroup.title}</span>
+                        </div>
+                        <ChevronDown className="h-5 w-5 transition-transform" />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <SidebarMenu>
+                          {menuGroup.items.map((item, itemIndex) => (
+                            <SidebarMenuItem key={itemIndex}>
+                              {menuGroup.title === 'Research Pipeline' ? (
+                                <SidebarMenuButton>
+                                  {'icon' in item && item.icon}
+                                  <span>{item.label}</span>
+                                </SidebarMenuButton>
+                              ) : (
+                                <SidebarMenuButton 
+                                  isActive={activeSession === item.id}
+                                  onClick={() => handleSessionSelect(item.id as number)}
+                                >
+                                  <MessageSquare className="mr-2 h-4 w-4 text-sirius-400" />
+                                  <div className="flex flex-col items-start">
+                                    <span className="text-sm truncate max-w-[180px]">{item.label}</span>
+                                    <span className="text-xs text-sidebar-foreground/60">{item.date}</span>
+                                  </div>
+                                </SidebarMenuButton>
+                              )}
+                            </SidebarMenuItem>
+                          ))}
+                        </SidebarMenu>
+                        
+                        {menuGroup.title === 'Chat History' && (
+                          <Button variant="ghost" size="sm" className="mt-2 w-full text-gray-400 hover:text-white">
+                            View all history <ChevronRight className="ml-1 w-4 h-4" />
+                          </Button>
+                        )}
+                      </CollapsibleContent>
+                    </Collapsible>
+                  </SidebarGroup>
+                ))}
+              </SidebarContent>
               
-              <SidebarSeparator className="my-4" />
-              
-              <SidebarGroup>
-                <Collapsible 
-                  open={openSections.history}
-                  onOpenChange={() => toggleSection('history')}
-                  className="w-full"
-                >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span className="font-medium">Chat History</span>
-                    <ChevronDown className="h-4 w-4 transition-transform" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="px-2">
-                      <SidebarMenu>
-                        {chatHistory.map((chat) => (
-                          <SidebarMenuItem key={chat.id}>
-                            <SidebarMenuButton 
-                              isActive={activeSession === chat.id}
-                              onClick={() => setActiveSession(chat.id)}
-                            >
-                              <MessageSquare className="mr-2 h-4 w-4 text-sirius-400" />
-                              <div className="flex flex-col items-start">
-                                <span className="text-sm truncate max-w-[180px]">{chat.title}</span>
-                                <span className="text-xs text-sidebar-foreground/60">{chat.date}</span>
-                              </div>
-                            </SidebarMenuButton>
-                          </SidebarMenuItem>
-                        ))}
-                      </SidebarMenu>
-                      
-                      <Button variant="ghost" size="sm" className="mt-2 w-full text-gray-400 hover:text-white">
-                        View all history <ChevronRight className="ml-1 w-4 h-4" />
-                      </Button>
-                    </div>
-                  </CollapsibleContent>
-                </Collapsible>
-              </SidebarGroup>
-            </SidebarContent>
+              <SidebarFooter className="mt-auto p-4 border-t border-border">
+                <div className="flex items-center justify-center">
+                  <Button variant="outline" size="sm" className="w-full">
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    New Research
+                  </Button>
+                </div>
+              </SidebarFooter>
+            </ScrollArea>
           </Sidebar>
           
           <div className="flex-1 overflow-hidden p-4 flex flex-col">
@@ -266,48 +271,50 @@ Next, I plan to investigate user demographics and then identify the major brands
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-hidden">
               {/* Chat UI Section */}
               <div className="flex flex-col h-full overflow-hidden bg-card/80 backdrop-blur-sm border-border rounded-lg border">
-                <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                  {messages.length === 0 ? (
-                    <div className="h-full flex flex-col items-center justify-center text-center p-6">
-                      <div className="w-16 h-16 rounded-full bg-sirius-500/20 flex items-center justify-center mb-4">
-                        <MessageSquare className="w-8 h-8 text-sirius-400" />
+                <ScrollArea className="flex-1 p-4">
+                  <div className="space-y-4">
+                    {messages.length === 0 ? (
+                      <div className="h-full flex flex-col items-center justify-center text-center p-6">
+                        <div className="w-16 h-16 rounded-full bg-sirius-500/20 flex items-center justify-center mb-4">
+                          <MessageSquare className="w-8 h-8 text-sirius-400" />
+                        </div>
+                        <h3 className="text-xl font-medium text-white mb-2">Welcome to SiriusAI</h3>
+                        <p className="text-gray-400 max-w-md">
+                          Start a conversation to generate marketing research insights
+                        </p>
                       </div>
-                      <h3 className="text-xl font-medium text-white mb-2">Welcome to SiriusAI</h3>
-                      <p className="text-gray-400 max-w-md">
-                        Start a conversation to generate marketing research insights
-                      </p>
-                    </div>
-                  ) : (
-                    messages.map((message, index) => (
-                      <div 
-                        key={index} 
-                        className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                      >
+                    ) : (
+                      messages.map((message, index) => (
                         <div 
-                          className={`max-w-3/4 rounded-lg p-3 ${
-                            message.type === 'user' 
-                              ? 'bg-sirius-500 text-white' 
-                              : 'bg-space-800 text-white'
-                          }`}
+                          key={index} 
+                          className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                         >
-                          <div className="text-sm mb-1">{message.content}</div>
-                          <div className="text-xs opacity-70 text-right">{formatTime(message.timestamp)}</div>
+                          <div 
+                            className={`max-w-3/4 rounded-lg p-3 ${
+                              message.type === 'user' 
+                                ? 'bg-sirius-500 text-white' 
+                                : 'bg-space-800 text-white'
+                            }`}
+                          >
+                            <div className="text-sm mb-1">{message.content}</div>
+                            <div className="text-xs opacity-70 text-right">{formatTime(message.timestamp)}</div>
+                          </div>
+                        </div>
+                      ))
+                    )}
+                    {isLoading && (
+                      <div className="flex justify-start">
+                        <div className="bg-space-800 text-white rounded-lg p-3">
+                          <div className="flex space-x-2">
+                            <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce"></div>
+                            <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                            <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                          </div>
                         </div>
                       </div>
-                    ))
-                  )}
-                  {isLoading && (
-                    <div className="flex justify-start">
-                      <div className="bg-space-800 text-white rounded-lg p-3">
-                        <div className="flex space-x-2">
-                          <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce"></div>
-                          <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                          <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                    )}
+                  </div>
+                </ScrollArea>
                 
                 <div className="p-4 border-t border-border">
                   <form onSubmit={handleMessageSubmit} className="flex space-x-2">
@@ -326,67 +333,69 @@ Next, I plan to investigate user demographics and then identify the major brands
               
               {/* Analysis Section */}
               <div className="flex flex-col h-full overflow-hidden">
-                <Card className="flex-1 overflow-y-auto bg-card/80 backdrop-blur-sm border-border">
-                  <CardContent className="p-6 h-full overflow-y-auto">
-                    {isLoading ? (
-                      <div className="py-20 flex flex-col items-center justify-center">
-                        <div className="h-12 w-12 rounded-full border-4 border-t-sirius-500 border-sirius-500/30 animate-spin mb-4"></div>
-                        <h3 className="text-xl font-medium text-white">Analyzing Data</h3>
-                        <p className="text-gray-400 mt-2">Our LLM research agents are conducting deep analysis...</p>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="flex items-center space-x-2 mb-4">
-                          <Sparkles className="w-5 h-5 text-sirius-400" />
-                          <h3 className="text-lg font-medium text-white">Research Analysis</h3>
+                <Card className="flex-1 overflow-hidden bg-card/80 backdrop-blur-sm border-border">
+                  <ScrollArea className="h-full">
+                    <CardContent className="p-6">
+                      {isLoading ? (
+                        <div className="py-20 flex flex-col items-center justify-center">
+                          <div className="h-12 w-12 rounded-full border-4 border-t-sirius-500 border-sirius-500/30 animate-spin mb-4"></div>
+                          <h3 className="text-xl font-medium text-white">Analyzing Data</h3>
+                          <p className="text-gray-400 mt-2">Our LLM research agents are conducting deep analysis...</p>
                         </div>
-                        <div className="prose prose-invert max-w-none mb-6">
-                          <pre className="bg-space-800/50 p-4 rounded-lg overflow-auto text-sm">
-                            {researchResults}
-                          </pre>
-                        </div>
-                        
-                        <div className="space-y-4">
-                          <div>
-                            <div className="flex items-center space-x-2 mb-2">
-                              <Database className="w-5 h-5 text-sirius-400" />
-                              <h3 className="text-md font-medium text-white">Data Sources</h3>
-                            </div>
-                            <div className="grid grid-cols-2 gap-2">
-                              {websites.slice(0, 6).map((website, i) => (
-                                <div key={i} className="bg-space-800/50 p-2 rounded-lg flex items-center text-sm">
-                                  <span className="truncate">{website}</span>
-                                </div>
-                              ))}
-                            </div>
+                      ) : (
+                        <>
+                          <div className="flex items-center space-x-2 mb-4">
+                            <Sparkles className="w-5 h-5 text-sirius-400" />
+                            <h3 className="text-lg font-medium text-white">Research Analysis</h3>
+                          </div>
+                          <div className="prose prose-invert max-w-none mb-6">
+                            <pre className="bg-space-800/50 p-4 rounded-lg overflow-auto text-sm">
+                              {researchResults}
+                            </pre>
                           </div>
                           
-                          <div>
-                            <div className="flex items-center space-x-2 mb-2">
-                              <TrendingUp className="w-5 h-5 text-sirius-400" />
-                              <h3 className="text-md font-medium text-white">Market Trends</h3>
+                          <div className="space-y-4">
+                            <div>
+                              <div className="flex items-center space-x-2 mb-2">
+                                <Database className="w-5 h-5 text-sirius-400" />
+                                <h3 className="text-md font-medium text-white">Data Sources</h3>
+                              </div>
+                              <div className="grid grid-cols-2 gap-2">
+                                {websites.slice(0, 6).map((website, i) => (
+                                  <div key={i} className="bg-space-800/50 p-2 rounded-lg flex items-center text-sm">
+                                    <span className="truncate">{website}</span>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
-                            <div className="space-y-2">
-                              {Array.from({length: 3}).map((_, i) => (
-                                <div key={i} className="bg-space-800/50 p-3 rounded-lg">
-                                  <div className="font-medium text-sm">Trend {i+1}</div>
-                                  <div className="text-xs text-gray-400 mt-1">
-                                    {["Increasing market adoption", "Shifting consumer preferences", "Technological innovation"][i]}
+                            
+                            <div>
+                              <div className="flex items-center space-x-2 mb-2">
+                                <TrendingUp className="w-5 h-5 text-sirius-400" />
+                                <h3 className="text-md font-medium text-white">Market Trends</h3>
+                              </div>
+                              <div className="space-y-2">
+                                {Array.from({length: 3}).map((_, i) => (
+                                  <div key={i} className="bg-space-800/50 p-3 rounded-lg">
+                                    <div className="font-medium text-sm">Trend {i+1}</div>
+                                    <div className="text-xs text-gray-400 mt-1">
+                                      {["Increasing market adoption", "Shifting consumer preferences", "Technological innovation"][i]}
+                                    </div>
+                                    <div className="mt-2 h-2 bg-space-700/50 rounded-full overflow-hidden">
+                                      <div 
+                                        className="h-full bg-sirius-500 rounded-full" 
+                                        style={{ width: `${Math.floor(Math.random() * 60) + 30}%` }}
+                                      ></div>
+                                    </div>
                                   </div>
-                                  <div className="mt-2 h-2 bg-space-700/50 rounded-full overflow-hidden">
-                                    <div 
-                                      className="h-full bg-sirius-500 rounded-full" 
-                                      style={{ width: `${Math.floor(Math.random() * 60) + 30}%` }}
-                                    ></div>
-                                  </div>
-                                </div>
-                              ))}
+                                ))}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </>
-                    )}
-                  </CardContent>
+                        </>
+                      )}
+                    </CardContent>
+                  </ScrollArea>
                 </Card>
               </div>
             </div>
