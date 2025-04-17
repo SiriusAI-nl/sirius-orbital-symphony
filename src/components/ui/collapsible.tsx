@@ -16,19 +16,33 @@ const Collapsible = React.forwardRef<
   // If we have a class that includes "hover:open", open on hover
   const hasHoverOpen = className?.includes("hover:open")
   
+  // Add debounce for hover to prevent flickering
+  const [debouncedIsHovered, setDebouncedIsHovered] = React.useState(false)
+  
+  React.useEffect(() => {
+    if (!hasHoverOpen) return
+    
+    // Use timeout to debounce hover state changes
+    const timer = setTimeout(() => {
+      setDebouncedIsHovered(isHovered)
+    }, 50) // Small delay to prevent flickering
+    
+    return () => clearTimeout(timer)
+  }, [isHovered, hasHoverOpen])
+  
   React.useEffect(() => {
     if (!hasHoverOpen || !collapsibleRef.current) return
     
-    // Set open state based on hover when the hover:open class is present
-    if (hasHoverOpen && isHovered && props.onOpenChange) {
+    // Set open state based on debounced hover when the hover:open class is present
+    if (hasHoverOpen && debouncedIsHovered && props.onOpenChange) {
       props.onOpenChange(true)
     }
     
     // Only close on mouse leave if we're using hover functionality
-    if (hasHoverOpen && !isHovered && props.onOpenChange) {
+    if (hasHoverOpen && !debouncedIsHovered && props.onOpenChange) {
       props.onOpenChange(false)
     }
-  }, [isHovered, props.onOpenChange, hasHoverOpen, props.open])
+  }, [debouncedIsHovered, props.onOpenChange, hasHoverOpen, props.open])
   
   return (
     <CollapsiblePrimitive.Root 
