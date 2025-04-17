@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, PieChart, Layers, Book, FileText, Search, Sparkles, MessageSquare, Send, PlusCircle, ChevronDown } from 'lucide-react';
+import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, Layers, Book, FileText, Search, Sparkles, MessageSquare, Send, PlusCircle, ChevronDown } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,31 +9,19 @@ import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import {
   Sidebar,
   SidebarProvider,
   SidebarContent,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
-  SidebarMenuSubButton,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarTrigger,
   SidebarSeparator,
   SidebarFooter,
 } from '@/components/ui/sidebar';
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const MarketResearchConsole = () => {
   const location = useLocation();
@@ -182,8 +169,8 @@ Next, I plan to investigate user demographics and then identify the major brands
       <div className="flex-1 flex pt-16">
         <SidebarProvider defaultOpen={true}>
           <Sidebar className="border-r border-border">
-            <ScrollArea className="h-[calc(100vh-4rem)]">
-              <SidebarContent className="pt-8">
+            <ScrollArea className="h-[calc(100vh-8rem)]">
+              <SidebarContent className="pt-4">
                 {menuItems.map((menuGroup, index) => (
                   <SidebarGroup key={index} className="mb-4">
                     <Collapsible 
@@ -195,26 +182,30 @@ Next, I plan to investigate user demographics and then identify the major brands
                       }))}
                       className="w-full"
                     >
-                      <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-3 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                      <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-3 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors group">
                         <div className="flex items-center">
                           {menuGroup.icon}
-                          <span className="font-medium">{menuGroup.title}</span>
+                          <span className="font-medium ml-2">{menuGroup.title}</span>
                         </div>
-                        <ChevronDown className="h-5 w-5 transition-transform" />
+                        <ChevronDown className="h-5 w-5 transition-transform group-data-[state=open]:rotate-180" />
                       </CollapsibleTrigger>
                       <CollapsibleContent>
                         <SidebarMenu>
                           {menuGroup.items.map((item, itemIndex) => (
-                            <SidebarMenuItem key={itemIndex}>
+                            <SidebarMenuItem key={itemIndex} className="group">
                               {menuGroup.title === 'Research Pipeline' ? (
-                                <SidebarMenuButton>
-                                  {'icon' in item && item.icon}
-                                  <span>{item.label}</span>
+                                <SidebarMenuButton className="group/submenu relative">
+                                  <div className="flex items-center">
+                                    {'icon' in item && item.icon}
+                                    <span className="ml-2">{item.label}</span>
+                                  </div>
+                                  <ChevronRight className="ml-auto opacity-0 group-hover/submenu:opacity-100 transition-opacity" />
                                 </SidebarMenuButton>
                               ) : (
                                 <SidebarMenuButton 
                                   isActive={activeSession === item.id}
                                   onClick={() => handleSessionSelect(item.id as number)}
+                                  className="flex items-center"
                                 >
                                   <MessageSquare className="mr-2 h-4 w-4 text-sirius-400" />
                                   <div className="flex flex-col items-start">
@@ -269,7 +260,6 @@ Next, I plan to investigate user demographics and then identify the major brands
             </div>
             
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-hidden">
-              {/* Chat UI Section */}
               <div className="flex flex-col h-full overflow-hidden bg-card/80 backdrop-blur-sm border-border rounded-lg border">
                 <ScrollArea className="flex-1 p-4">
                   <div className="space-y-4">
@@ -331,7 +321,6 @@ Next, I plan to investigate user demographics and then identify the major brands
                 </div>
               </div>
               
-              {/* Analysis Section */}
               <div className="flex flex-col h-full overflow-hidden">
                 <Card className="flex-1 overflow-hidden bg-card/80 backdrop-blur-sm border-border">
                   <ScrollArea className="h-full">
