@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -118,10 +117,10 @@ const MultiAgentDiagram: React.FC = () => {
 
   return (
     <div className="relative w-full h-[450px] md:h-[550px]">
-      {/* Central orchestrator */}
-      <NeuralNode x={50} y={50} label="Orchestrator" size={90} className="z-20" color={nodeColors.orchestrator} />
+      {/* Central orchestrator - increased by 50% from 90 to 135 */}
+      <NeuralNode x={50} y={50} label="Orchestrator" size={135} className="z-20" color={nodeColors.orchestrator} />
       
-      {/* Surrounding agents */}
+      {/* Surrounding agents remain the same size */}
       <NeuralNode x={30} y={30} label="Data Agent" size={70} color={nodeColors.data} />
       <NeuralNode x={70} y={30} label="Planning Agent" size={70} color={nodeColors.planning} />
       <NeuralNode x={30} y={70} label="Reasoning Agent" size={70} color={nodeColors.reasoning} />
