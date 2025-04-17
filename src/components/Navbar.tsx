@@ -13,16 +13,19 @@ export default function Navbar() {
               <img 
                 src="/lovable-uploads/fc546ffb-54c0-483e-aad0-9dc47ce7ba5e.png" 
                 alt="Sirius AI Logo" 
-                className="w-8 h-8 mr-2"
+                className="w-8 h-8 mr-2 filter brightness-125 saturate-150"
               />
-              <span className="text-white font-semibold text-lg tracking-tight">Sirius AI</span>
+              <div className="flex flex-col items-start">
+                <span className="text-white font-semibold text-lg tracking-tight leading-none">SiriusAI</span>
+                <span className="text-sirius-400 text-xs tracking-wide">solutions</span>
+              </div>
             </a>
           </div>
           <div className="hidden md:block">
             <div className="flex items-center space-x-4">
               <a href="#market-research" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Market Research</a>
-              <a href="#solutions" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Multi-Agent Orchestration</a>
-              <a href="#workflow" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Workflow Automation</a>
+              <a href="#solutions" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">AI Agents</a>
+              <a href="#workflow" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Workflows</a>
               <a href="#features" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Features</a>
               <a href="#pricing" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Pricing</a>
               <Button className="bg-sirius-500 hover:bg-sirius-600 text-white text-sm px-3 py-1.5">Get Started</Button>
