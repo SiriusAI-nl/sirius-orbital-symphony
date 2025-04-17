@@ -11,12 +11,12 @@ export default function Navbar() {
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <img 
-                src="/lovable-uploads/fc546ffb-54c0-483e-aad0-9dc47ce7ba5e.png" 
+                src="/lovable-uploads/9eeeee9c-9327-452d-8e0d-b3b5f2ca8792.png" 
                 alt="Sirius AI Logo" 
                 className="w-8 h-8 mr-2 filter brightness-125 saturate-150"
               />
               <div className="flex flex-col items-start">
-                <span className="text-white font-semibold text-lg tracking-tight leading-none">SiriusAI</span>
+                <span className="text-white font-extrabold text-lg tracking-tight leading-none">SiriusAI</span>
                 <span className="text-sirius-400 text-xs tracking-wide">solutions</span>
               </div>
             </a>
@@ -43,3 +43,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
