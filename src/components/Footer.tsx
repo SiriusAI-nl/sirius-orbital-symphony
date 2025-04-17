@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               <span className="text-white font-semibold text-xl">Sirius AI</span>
             </div>
             <p className="text-sm text-gray-400 mb-4">
-              Multi-agent orchestration and workflow automation platform. Our agents are designed to share our sense of humor, but will actually work correctly.
+              Our agents may have a personality, but DON'T PANIC! Our agents are designed to share our sense of humor, but will actually work correctly. And yes, also uncensored! ;-)
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
