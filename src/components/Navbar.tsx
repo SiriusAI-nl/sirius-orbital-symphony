@@ -20,7 +20,7 @@ export default function Navbar() {
               <img 
                 src="/lovable-uploads/9eeeee9c-9327-452d-8e0d-b3b5f2ca8792.png" 
                 alt="Sirius AI Logo" 
-                className="w-[11.76rem] h-[11.76rem] mr-4 filter brightness-125 saturate-150"
+                className="w-[7.056rem] h-[7.056rem] mr-4 filter brightness-125 saturate-150"
               />
               <span className="text-sirius-400 text-[0.525rem] tracking-wide -mt-3">Solutions</span>
             </Link>
