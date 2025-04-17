@@ -12,7 +12,7 @@ interface NeuralNodeProps {
 }
 
 const NeuralNode: React.FC<NeuralNodeProps> = ({ 
-  x, y, label, size = 50, className, color = "from-sirius-400 to-sirius-600"
+  x, y, label, size = 60, className, color = "from-sirius-400/70 to-sirius-600/70"
 }) => {
   const [animationDelay, setAnimationDelay] = useState("0s");
   const [animationDuration, setAnimationDuration] = useState("6s");
@@ -61,7 +61,7 @@ interface NeuralConnectionProps {
 }
 
 const NeuralConnection: React.FC<NeuralConnectionProps> = ({ 
-  startX, startY, endX, endY, animated = false, pulseColor = "bg-sirius-300", width = 2
+  startX, startY, endX, endY, animated = false, pulseColor = "bg-sirius-300/60", width = 2
 }) => {
   const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
   const distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
@@ -69,7 +69,7 @@ const NeuralConnection: React.FC<NeuralConnectionProps> = ({
   return (
     <div 
       className={cn(
-        "absolute h-[2px] bg-gradient-to-r from-white/20 to-white/5",
+        "absolute h-[2px] bg-gradient-to-r from-white/15 to-white/5",
         animated && "after:content-[''] after:absolute after:w-[6px] after:h-[6px] after:rounded-full after:animate-orbit"
       )} 
       style={{ 
@@ -95,69 +95,74 @@ const NeuralConnection: React.FC<NeuralConnectionProps> = ({
 };
 
 const MultiAgentDiagram: React.FC = () => {
-  // Colors for different node types (faded palette)
+  // Colors for different node types (more faded palette)
   const nodeColors = {
-    orchestrator: "from-sirius-400/90 to-sirius-600/90",
-    data: "from-blue-400/70 to-blue-500/70",
-    planning: "from-purple-400/70 to-purple-500/70",
-    reasoning: "from-amber-400/70 to-amber-500/70",
-    output: "from-emerald-400/70 to-emerald-500/70",
-    memory: "from-rose-400/70 to-rose-500/70",
-    knowledge: "from-cyan-400/70 to-cyan-500/70"
+    orchestrator: "from-sirius-400/80 to-sirius-600/80",
+    data: "from-blue-400/50 to-blue-500/50",
+    planning: "from-purple-400/50 to-purple-500/50",
+    reasoning: "from-amber-400/50 to-amber-500/50",
+    output: "from-emerald-400/50 to-emerald-500/50",
+    memory: "from-rose-400/50 to-rose-500/50",
+    knowledge: "from-cyan-400/50 to-cyan-500/50"
   };
   
-  // Connection pulse colors
+  // Connection pulse colors (faded)
   const pulseColors = {
-    data: "bg-blue-300",
-    planning: "bg-purple-300",
-    reasoning: "bg-amber-300",
-    output: "bg-emerald-300",
-    memory: "bg-rose-300",
-    knowledge: "bg-cyan-300"
+    data: "bg-blue-300/60",
+    planning: "bg-purple-300/60",
+    reasoning: "bg-amber-300/60",
+    output: "bg-emerald-300/60",
+    memory: "bg-rose-300/60",
+    knowledge: "bg-cyan-300/60"
   };
 
   return (
-    <div className="relative w-full h-[400px] md:h-[500px]">
-      {/* Central orchestrator */}
-      <NeuralNode x={50} y={50} label="Orchestrator" size={70} className="z-20" color={nodeColors.orchestrator} />
+    <div className="relative w-full h-[450px] md:h-[550px]">
+      {/* Central orchestrator - larger */}
+      <NeuralNode x={50} y={50} label="Orchestrator" size={90} className="z-20" color={nodeColors.orchestrator} />
       
-      {/* Surrounding agents */}
-      <NeuralNode x={30} y={30} label="Data Agent" color={nodeColors.data} />
-      <NeuralNode x={70} y={30} label="Planning Agent" color={nodeColors.planning} />
-      <NeuralNode x={30} y={70} label="Reasoning Agent" color={nodeColors.reasoning} />
-      <NeuralNode x={70} y={70} label="Output Agent" color={nodeColors.output} />
-      <NeuralNode x={20} y={50} label="Memory Agent" color={nodeColors.memory} />
-      <NeuralNode x={80} y={50} label="Knowledge Agent" color={nodeColors.knowledge} />
+      {/* Surrounding agents - in tighter cluster but with more repulsion */}
+      <NeuralNode x={35} y={35} label="Data Agent" size={70} color={nodeColors.data} />
+      <NeuralNode x={65} y={35} label="Planning Agent" size={70} color={nodeColors.planning} />
+      <NeuralNode x={35} y={65} label="Reasoning Agent" size={70} color={nodeColors.reasoning} />
+      <NeuralNode x={65} y={65} label="Output Agent" size={70} color={nodeColors.output} />
+      <NeuralNode x={25} y={50} label="Memory Agent" size={70} color={nodeColors.memory} />
+      <NeuralNode x={75} y={50} label="Knowledge Agent" size={70} color={nodeColors.knowledge} />
       
-      {/* Additional nodes for neural network effect */}
-      <NeuralNode x={40} y={20} label="Parser" size={35} color={nodeColors.data} />
-      <NeuralNode x={60} y={20} label="Validator" size={35} color={nodeColors.planning} />
-      <NeuralNode x={15} y={35} label="Cache" size={35} color={nodeColors.memory} />
-      <NeuralNode x={85} y={35} label="Search" size={35} color={nodeColors.knowledge} />
-      <NeuralNode x={45} y={80} label="Logic" size={35} color={nodeColors.reasoning} />
-      <NeuralNode x={55} y={80} label="Format" size={35} color={nodeColors.output} />
+      {/* Additional nodes for neural network effect - also larger */}
+      <NeuralNode x={40} y={25} label="Parser" size={55} color={nodeColors.data} />
+      <NeuralNode x={60} y={25} label="Validator" size={55} color={nodeColors.planning} />
+      <NeuralNode x={20} y={35} label="Cache" size={55} color={nodeColors.memory} />
+      <NeuralNode x={80} y={35} label="Search" size={55} color={nodeColors.knowledge} />
+      <NeuralNode x={40} y={75} label="Logic" size={55} color={nodeColors.reasoning} />
+      <NeuralNode x={60} y={75} label="Format" size={55} color={nodeColors.output} />
       
-      {/* Neural connections */}
-      <NeuralConnection startX={50} startY={50} endX={30} endY={30} animated pulseColor={pulseColors.data} />
-      <NeuralConnection startX={50} startY={50} endX={70} endY={30} animated pulseColor={pulseColors.planning} />
-      <NeuralConnection startX={50} startY={50} endX={30} endY={70} animated pulseColor={pulseColors.reasoning} />
-      <NeuralConnection startX={50} startY={50} endX={70} endY={70} animated pulseColor={pulseColors.output} />
-      <NeuralConnection startX={50} startY={50} endX={20} endY={50} animated pulseColor={pulseColors.memory} />
-      <NeuralConnection startX={50} startY={50} endX={80} endY={50} animated pulseColor={pulseColors.knowledge} />
+      {/* Neural connections - core connections */}
+      <NeuralConnection startX={50} startY={50} endX={35} endY={35} animated pulseColor={pulseColors.data} width={3} />
+      <NeuralConnection startX={50} startY={50} endX={65} endY={35} animated pulseColor={pulseColors.planning} width={3} />
+      <NeuralConnection startX={50} startY={50} endX={35} endY={65} animated pulseColor={pulseColors.reasoning} width={3} />
+      <NeuralConnection startX={50} startY={50} endX={65} endY={65} animated pulseColor={pulseColors.output} width={3} />
+      <NeuralConnection startX={50} startY={50} endX={25} endY={50} animated pulseColor={pulseColors.memory} width={3} />
+      <NeuralConnection startX={50} startY={50} endX={75} endY={50} animated pulseColor={pulseColors.knowledge} width={3} />
       
       {/* Additional connections for neural network complexity */}
-      <NeuralConnection startX={30} startY={30} endX={40} endY={20} width={1} />
-      <NeuralConnection startX={70} startY={30} endX={60} endY={20} width={1} />
-      <NeuralConnection startX={20} startY={50} endX={15} endY={35} width={1} />
-      <NeuralConnection startX={80} startY={50} endX={85} endY={35} width={1} />
-      <NeuralConnection startX={30} startY={70} endX={45} endY={80} width={1} />
-      <NeuralConnection startX={70} startY={70} endX={55} endY={80} width={1} />
+      <NeuralConnection startX={35} startY={35} endX={40} endY={25} width={1.5} />
+      <NeuralConnection startX={65} startY={35} endX={60} endY={25} width={1.5} />
+      <NeuralConnection startX={25} startY={50} endX={20} endY={35} width={1.5} />
+      <NeuralConnection startX={75} startY={50} endX={80} endY={35} width={1.5} />
+      <NeuralConnection startX={35} startY={65} endX={40} endY={75} width={1.5} />
+      <NeuralConnection startX={65} startY={65} endX={60} endY={75} width={1.5} />
       
       {/* Cross connections */}
-      <NeuralConnection startX={40} startY={20} endX={60} endY={20} width={1} />
-      <NeuralConnection startX={15} startY={35} endX={30} endY={30} width={1} />
-      <NeuralConnection startX={85} startY={35} endX={70} endY={30} width={1} />
-      <NeuralConnection startX={45} startY={80} endX={55} endY={80} width={1} />
+      <NeuralConnection startX={40} startY={25} endX={60} endY={25} width={1.5} />
+      <NeuralConnection startX={20} startY={35} endX={35} endY={35} width={1.5} />
+      <NeuralConnection startX={80} startY={35} endX={65} endY={35} width={1.5} />
+      <NeuralConnection startX={40} startY={75} endX={60} endY={75} width={1.5} />
+      
+      {/* Additional inter-node connections for dense network effect */}
+      <NeuralConnection startX={35} startY={35} endX={65} endY={65} width={1} />
+      <NeuralConnection startX={65} startY={35} endX={35} endY={65} width={1} />
+      <NeuralConnection startX={25} startY={50} endX={75} endY={50} width={1} />
     </div>
   );
 };
