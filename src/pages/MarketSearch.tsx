@@ -38,8 +38,21 @@ const MarketSearch = () => {
       <Navbar />
       
       <section className="flex-1 flex flex-col items-center justify-center py-12 px-4 relative z-10">
-        <div className="max-w-3xl mx-auto w-full text-center">
-          <div className="space-y-8">
+        <div className="max-w-3xl mx-auto w-full text-center relative">
+          {/* Create a fading edge image overlay */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `url('/lovable-uploads/438a53a5-726d-41c8-b80a-ccfa98ae3aeb.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: 0.7,
+              maskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)'
+            }}
+          ></div>
+          
+          <div className="space-y-8 relative z-10">
             <div className="space-y-4">
               <div className="inline-flex items-center space-x-2 bg-sirius-500/10 p-2 rounded-lg mb-2">
                 <SearchIcon className="w-5 h-5 text-sirius-400" />
