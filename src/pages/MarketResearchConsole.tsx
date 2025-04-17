@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, Layers, Book, FileText, Search, Sparkles, MessageSquare, Send, PlusCircle, ChevronDown } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -167,7 +168,7 @@ Next, I plan to investigate user demographics and then identify the major brands
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
       
-      <div className="flex-1 flex pt-24 pb-4 px-4 space-x-4">
+      <div className="flex-1 flex pt-16 pb-4 px-4 space-x-4">
         <SidebarProvider defaultOpen={true}>
           <Sidebar className="border-r border-border ml-4 h-[calc(100vh-12rem)]">
             <ScrollArea className="h-full">
