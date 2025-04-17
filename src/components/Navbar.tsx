@@ -16,8 +16,8 @@ export default function Navbar() {
                 className="w-24 h-24 mr-4 filter brightness-125 saturate-150"
               />
               <div className="flex flex-col items-start">
-                <span className="text-white font-black text-2xl tracking-tight leading-tight">Cybernetic</span>
-                <span className="text-sirius-400 text-xl tracking-wide">Solutions</span>
+                <span className="text-white font-black text-lg tracking-tight leading-none">Cybernetic</span>
+                <span className="text-sirius-400 text-xs tracking-wide">Solutions</span>
               </div>
             </a>
           </div>
