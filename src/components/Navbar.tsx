@@ -20,13 +20,12 @@ export default function Navbar() {
               <img 
                 src="/lovable-uploads/9eeeee9c-9327-452d-8e0d-b3b5f2ca8792.png" 
                 alt="Sirius AI Logo" 
-                className="w-[16.8rem] h-[16.8rem] mr-4 filter brightness-125 saturate-150"
+                className="w-[8.4rem] h-[8.4rem] mr-4 filter brightness-125 saturate-150"
               />
               <span className="text-sirius-400 text-[0.525rem] tracking-wide -mt-3">Solutions</span>
             </Link>
           </div>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="flex items-center space-x-6">
               <Link to="/market-research" className="text-gray-300 hover:text-white transition-colors text-base font-bold">
@@ -50,7 +49,6 @@ export default function Navbar() {
             </div>
           </div>
           
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <Button 
               variant="ghost" 
@@ -66,7 +64,6 @@ export default function Navbar() {
           </div>
         </div>
         
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-3">
             <div className="flex flex-col space-y-4">
