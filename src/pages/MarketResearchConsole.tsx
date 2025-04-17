@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, PieChart, Layers, Book, FileText, Search, Sparkles, ChevronDown } from 'lucide-react';
+import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, PieChart, Layers, Book, FileText, Search, Sparkles, ChevronDown, MessageSquare } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -21,7 +21,8 @@ import {
   SidebarMenuSubItem,
   SidebarGroup,
   SidebarGroupLabel,
-  SidebarTrigger
+  SidebarTrigger,
+  SidebarSeparator
 } from '@/components/ui/sidebar';
 
 const MarketResearchConsole = () => {
@@ -38,6 +39,15 @@ const MarketResearchConsole = () => {
     deepResearch: true,
     reporting: true
   });
+
+  // Chat history data
+  const [chatHistory] = useState([
+    { id: 1, title: "Gaming market trends", date: "2025-04-16" },
+    { id: 2, title: "AI software competitors", date: "2025-04-12" },
+    { id: 3, title: "Renewable energy market size", date: "2025-04-10" },
+    { id: 4, title: "Cloud storage providers", date: "2025-04-05" },
+    { id: 5, title: "Smart home adoption rates", date: "2025-03-28" },
+  ]);
 
   // Get the query from the location state
   useEffect(() => {
@@ -107,144 +117,176 @@ Next, I plan to investigate user demographics and then identify the major brands
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
       
-      <div className="flex-1 flex">
+      <div className="flex-1 flex pt-24"> {/* Added padding-top to move content below header */}
         <SidebarProvider defaultOpen={true}>
           <Sidebar className="border-r border-border">
             <SidebarContent>
-              {/* Phase 1: Data Retrieval */}
+              {/* Research Pipeline Section */}
               <SidebarGroup>
-                <div className="flex items-center mb-1">
-                  <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">1</div>
-                  <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Data Retrieval</SidebarGroupLabel>
-                </div>
-                <Collapsible 
-                  open={openSections.dataRetrieval}
-                  onOpenChange={() => toggleSection('dataRetrieval')}
-                  className="hover:open w-full"
-                >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span className="font-medium">Data Sources</span>
-                    <ChevronDown className="h-4 w-4 transition-transform" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <SidebarMenu>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Keywords" isActive={activeSection === 'keywords'} onClick={() => handleSectionChange('keywords')}>
-                          <Activity className="mr-2" />
-                          <span>Keywords</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Competition" isActive={activeSection === 'competition'} onClick={() => handleSectionChange('competition')}>
-                          <Users className="mr-2" />
-                          <span>Competition</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Trends" isActive={activeSection === 'trends'} onClick={() => handleSectionChange('trends')}>
-                          <TrendingUp className="mr-2" />
-                          <span>Trends</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    </SidebarMenu>
-                  </CollapsibleContent>
-                </Collapsible>
+                <SidebarGroupLabel className="text-lg font-medium text-sirius-300 px-3 pb-2">Research Pipeline</SidebarGroupLabel>
+              
+                {/* Phase 1: Data Retrieval */}
+                <SidebarGroup>
+                  <div className="flex items-center mb-1">
+                    <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">1</div>
+                    <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Data Retrieval</SidebarGroupLabel>
+                  </div>
+                  <Collapsible 
+                    open={openSections.dataRetrieval}
+                    onOpenChange={() => toggleSection('dataRetrieval')}
+                    className="w-full"
+                  >
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                      <span className="font-medium">Data Sources</span>
+                      <ChevronDown className="h-4 w-4 transition-transform" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <SidebarMenu>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton tooltip="Keywords" isActive={activeSection === 'keywords'} onClick={() => handleSectionChange('keywords')}>
+                            <Activity className="mr-2" />
+                            <span>Keywords</span>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton tooltip="Competition" isActive={activeSection === 'competition'} onClick={() => handleSectionChange('competition')}>
+                            <Users className="mr-2" />
+                            <span>Competition</span>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton tooltip="Trends" isActive={activeSection === 'trends'} onClick={() => handleSectionChange('trends')}>
+                            <TrendingUp className="mr-2" />
+                            <span>Trends</span>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      </SidebarMenu>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </SidebarGroup>
+                
+                {/* Phase 2: Data Analysis */}
+                <SidebarGroup>
+                  <div className="flex items-center mb-1">
+                    <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">2</div>
+                    <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Data Analysis</SidebarGroupLabel>
+                  </div>
+                  <Collapsible 
+                    open={openSections.dataAnalysis}
+                    onOpenChange={() => toggleSection('dataAnalysis')}
+                    className="w-full"
+                  >
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                      <span className="font-medium">Analysis Methods</span>
+                      <ChevronDown className="h-4 w-4 transition-transform" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <SidebarMenu>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton tooltip="Keyword Analysis" isActive={activeSection === 'keyword-analysis'} onClick={() => handleSectionChange('keyword-analysis')}>
+                            <PieChart className="mr-2" />
+                            <span>Keyword Analysis</span>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton tooltip="Competitor Analysis" isActive={activeSection === 'competitor-analysis'} onClick={() => handleSectionChange('competitor-analysis')}>
+                            <BarChart2 className="mr-2" />
+                            <span>Competitor Analysis</span>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton tooltip="Trend Analysis" isActive={activeSection === 'trend-analysis'} onClick={() => handleSectionChange('trend-analysis')}>
+                            <TrendingUp className="mr-2" />
+                            <span>Trend Analysis</span>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      </SidebarMenu>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </SidebarGroup>
+                
+                {/* Phase 3: Deep Research */}
+                <SidebarGroup>
+                  <div className="flex items-center mb-1">
+                    <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">3</div>
+                    <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Deep Research</SidebarGroupLabel>
+                  </div>
+                  <Collapsible 
+                    open={openSections.deepResearch}
+                    onOpenChange={() => toggleSection('deepResearch')}
+                    className="w-full"
+                  >
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                      <span className="font-medium">Research Methods</span>
+                      <ChevronDown className="h-4 w-4 transition-transform" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <SidebarMenu>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton tooltip="Deep Reasoning" isActive={activeSection === 'deep-reasoning'} onClick={() => handleSectionChange('deep-reasoning')}>
+                            <Layers className="mr-2" />
+                            <span>Deep Reasoning</span>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      </SidebarMenu>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </SidebarGroup>
+                
+                {/* Phase 4: Reporting */}
+                <SidebarGroup>
+                  <div className="flex items-center mb-1">
+                    <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">4</div>
+                    <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Reporting</SidebarGroupLabel>
+                  </div>
+                  <Collapsible 
+                    open={openSections.reporting}
+                    onOpenChange={() => toggleSection('reporting')}
+                    className="w-full"
+                  >
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
+                      <span className="font-medium">Report Types</span>
+                      <ChevronDown className="h-4 w-4 transition-transform" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <SidebarMenu>
+                        <SidebarMenuItem>
+                          <SidebarMenuButton tooltip="Market Research Reports" isActive={activeSection === 'market-research-reports'} onClick={() => handleSectionChange('market-research-reports')}>
+                            <FileText className="mr-2" />
+                            <span>Market Research Reports</span>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
+                      </SidebarMenu>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </SidebarGroup>
               </SidebarGroup>
               
-              {/* Phase 2: Data Analysis */}
-              <SidebarGroup>
-                <div className="flex items-center mb-1">
-                  <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">2</div>
-                  <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Data Analysis</SidebarGroupLabel>
-                </div>
-                <Collapsible 
-                  open={openSections.dataAnalysis}
-                  onOpenChange={() => toggleSection('dataAnalysis')}
-                  className="hover:open w-full"
-                >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span className="font-medium">Analysis Methods</span>
-                    <ChevronDown className="h-4 w-4 transition-transform" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <SidebarMenu>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Keyword Analysis" isActive={activeSection === 'keyword-analysis'} onClick={() => handleSectionChange('keyword-analysis')}>
-                          <PieChart className="mr-2" />
-                          <span>Keyword Analysis</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Competitor Analysis" isActive={activeSection === 'competitor-analysis'} onClick={() => handleSectionChange('competitor-analysis')}>
-                          <BarChart2 className="mr-2" />
-                          <span>Competitor Analysis</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Trend Analysis" isActive={activeSection === 'trend-analysis'} onClick={() => handleSectionChange('trend-analysis')}>
-                          <TrendingUp className="mr-2" />
-                          <span>Trend Analysis</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    </SidebarMenu>
-                  </CollapsibleContent>
-                </Collapsible>
-              </SidebarGroup>
+              {/* Separator between Research Pipeline and Chat History */}
+              <SidebarSeparator className="my-4" />
               
-              {/* Phase 3: Deep Research */}
+              {/* Chat History Section */}
               <SidebarGroup>
-                <div className="flex items-center mb-1">
-                  <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">3</div>
-                  <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Deep Research</SidebarGroupLabel>
-                </div>
-                <Collapsible 
-                  open={openSections.deepResearch}
-                  onOpenChange={() => toggleSection('deepResearch')}
-                  className="hover:open w-full"
-                >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span className="font-medium">Research Methods</span>
-                    <ChevronDown className="h-4 w-4 transition-transform" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <SidebarMenu>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Deep Reasoning" isActive={activeSection === 'deep-reasoning'} onClick={() => handleSectionChange('deep-reasoning')}>
-                          <Layers className="mr-2" />
-                          <span>Deep Reasoning</span>
+                <SidebarGroupLabel className="text-lg font-medium text-sirius-300 px-3 pb-2">Chat History</SidebarGroupLabel>
+                <div className="px-3">
+                  <SidebarMenu>
+                    {chatHistory.map((chat) => (
+                      <SidebarMenuItem key={chat.id}>
+                        <SidebarMenuButton>
+                          <MessageSquare className="mr-2 h-4 w-4 text-sirius-400" />
+                          <div className="flex flex-col items-start">
+                            <span className="text-sm truncate max-w-[180px]">{chat.title}</span>
+                            <span className="text-xs text-sidebar-foreground/60">{chat.date}</span>
+                          </div>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
-                    </SidebarMenu>
-                  </CollapsibleContent>
-                </Collapsible>
-              </SidebarGroup>
-              
-              {/* Phase 4: Reporting */}
-              <SidebarGroup>
-                <div className="flex items-center mb-1">
-                  <div className="w-6 h-6 rounded-full bg-sirius-500 flex items-center justify-center text-white font-medium mr-2">4</div>
-                  <SidebarGroupLabel className="text-xl font-medium text-sirius-300">Reporting</SidebarGroupLabel>
+                    ))}
+                  </SidebarMenu>
+                  
+                  <Button variant="ghost" size="sm" className="mt-2 w-full text-gray-400 hover:text-white">
+                    View all history <ChevronRight className="ml-1 w-4 h-4" />
+                  </Button>
                 </div>
-                <Collapsible 
-                  open={openSections.reporting}
-                  onOpenChange={() => toggleSection('reporting')}
-                  className="hover:open w-full"
-                >
-                  <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-2 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors">
-                    <span className="font-medium">Report Types</span>
-                    <ChevronDown className="h-4 w-4 transition-transform" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <SidebarMenu>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton tooltip="Market Research Reports" isActive={activeSection === 'market-research-reports'} onClick={() => handleSectionChange('market-research-reports')}>
-                          <FileText className="mr-2" />
-                          <span>Market Research Reports</span>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    </SidebarMenu>
-                  </CollapsibleContent>
-                </Collapsible>
               </SidebarGroup>
             </SidebarContent>
           </Sidebar>
