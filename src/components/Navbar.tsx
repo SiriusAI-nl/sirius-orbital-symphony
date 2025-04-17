@@ -12,7 +12,7 @@ export default function Navbar() {
               <img 
                 src="/lovable-uploads/9eeeee9c-9327-452d-8e0d-b3b5f2ca8792.png" 
                 alt="Sirius AI Logo" 
-                className="w-12 h-12 mr-2 filter brightness-125 saturate-150"
+                className="w-24 h-24 mr-2 filter brightness-125 saturate-150"
               />
               <div className="flex flex-col items-start">
                 <span className="text-white font-extrabold text-lg tracking-tight leading-none">SiriusAI</span>
