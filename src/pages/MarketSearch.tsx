@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { SearchIcon, ArrowRightIcon, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -39,7 +40,7 @@ const MarketSearch = () => {
       <section className="flex-1 flex flex-col items-center justify-center py-12 px-4 relative z-10">
         <div className="max-w-3xl mx-auto w-full text-center relative">
           <div 
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none z-0" // Added z-0 to ensure it stays behind content
             style={{
               backgroundImage: `url('/lovable-uploads/8c9dfb81-5f70-4b6d-9813-ddf2331aa0f8.png')`,
               backgroundSize: 'cover',
