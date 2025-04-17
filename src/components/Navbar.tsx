@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -12,22 +13,22 @@ export default function Navbar() {
               <img 
                 src="/lovable-uploads/9eeeee9c-9327-452d-8e0d-b3b5f2ca8792.png" 
                 alt="Sirius AI Logo" 
-                className="w-24 h-24 mr-2 filter brightness-125 saturate-150"
+                className="w-24 h-24 mr-4 filter brightness-125 saturate-150"
               />
               <div className="flex flex-col items-start">
-                <span className="text-white font-extrabold text-lg tracking-tight leading-none">SiriusAI</span>
-                <span className="text-sirius-400 text-xs tracking-wide">solutions</span>
+                <span className="text-white font-black text-2xl tracking-tight leading-tight">Cybernetic</span>
+                <span className="text-sirius-400 text-xl tracking-wide">Solutions</span>
               </div>
             </a>
           </div>
           <div className="hidden md:block">
-            <div className="flex items-center space-x-4">
-              <a href="#market-research" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Market Research</a>
-              <a href="#solutions" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">AI Agents</a>
-              <a href="#workflow" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Workflows</a>
-              <a href="#features" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Features</a>
-              <a href="#pricing" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Pricing</a>
-              <Button className="bg-sirius-500 hover:bg-sirius-600 text-white text-sm px-3 py-1.5">Get Started</Button>
+            <div className="flex items-center space-x-6">
+              <a href="#market-research" className="text-gray-300 hover:text-white transition-colors text-base font-bold">Market Research</a>
+              <a href="#solutions" className="text-gray-300 hover:text-white transition-colors text-base font-bold">AI Agents</a>
+              <a href="#workflow" className="text-gray-300 hover:text-white transition-colors text-base font-bold">Workflows</a>
+              <a href="#features" className="text-gray-300 hover:text-white transition-colors text-base font-bold">Features</a>
+              <a href="#pricing" className="text-gray-300 hover:text-white transition-colors text-base font-bold">Pricing</a>
+              <Button className="bg-sirius-500 hover:bg-sirius-600 text-white text-base px-4 py-2 font-bold">Get Started</Button>
             </div>
           </div>
           <div className="md:hidden">
