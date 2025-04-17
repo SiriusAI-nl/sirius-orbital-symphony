@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
                   <span className="text-white font-bold">S</span>
                 </div>
               </div>
-              <span className="text-white font-semibold text-xl">Sirius AI</span>
+              <span className="text-white font-semibold text-xl">Sirius AI <span className="text-sirius-300 text-base ml-1">agents</span></span>
             </div>
             <p className="text-sm text-gray-400 mb-4">
               They are may have a personality, but DON'T PANIC! They are designed to share our sense of humor, but will actually work correctly. And yes, also uncensored! ;-)
