@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import MarketResearch from "./pages/MarketResearch";
 import MarketSearch from "./pages/MarketSearch";
+import MarketResearchConsole from "./pages/MarketResearchConsole";
 import AiAgents from "./pages/AiAgents";
 import Workflows from "./pages/Workflows";
 import Features from "./pages/Features";
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/market-research" element={<MarketResearch />} />
           <Route path="/market-search" element={<MarketSearch />} />
+          <Route path="/market-research-console" element={<MarketResearchConsole />} />
           <Route path="/ai-agents" element={<AiAgents />} />
           <Route path="/workflows" element={<Workflows />} />
           <Route path="/features" element={<Features />} />

@@ -27,7 +27,7 @@ const MarketSearch = () => {
     setTimeout(() => {
       setIsSearching(false);
       toast.success(`Market analysis for "${query}" initialized`);
-      navigate('/market-research', { state: { query } });
+      navigate('/market-research-console', { state: { query } });
     }, 1500);
   };
 

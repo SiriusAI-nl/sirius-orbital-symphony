@@ -1,0 +1,320 @@
+
+import React, { useState, useEffect } from 'react';
+import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, PieChart, Layers, Book, FileText, Search, Sparkles } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Command, CommandInput } from '@/components/ui/command';
+import { toast } from 'sonner';
+import {
+  Sidebar,
+  SidebarProvider,
+  SidebarContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarTrigger
+} from '@/components/ui/sidebar';
+
+const MarketResearchConsole = () => {
+  const location = useLocation();
+  const [query, setQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState('keywords');
+  const [websites, setWebsites] = useState<string[]>([]);
+  const [researchResults, setResearchResults] = useState<string>('');
+
+  // Get the query from the location state
+  useEffect(() => {
+    if (location.state?.query) {
+      setQuery(location.state.query);
+      
+      // Simulate loading
+      setTimeout(() => {
+        setIsLoading(false);
+        generateFakeWebsites();
+        generateFakeResearchResults();
+      }, 2000);
+    }
+  }, [location.state]);
+
+  const generateFakeWebsites = () => {
+    const fakeWebsites = [
+      'marketresearch.com',
+      'industrytrends.org',
+      'competitoranalysis.co',
+      'statista.com',
+      'keywordinsights.net',
+      'marketshare.io',
+      'consumertrends.com',
+      'competitorspy.org',
+      'marketingdata.co',
+      'trendreports.com',
+      'insightplatform.io',
+      'analyticsreports.net',
+      'datatrends.org',
+      'marketintel.co',
+      'keywordtools.com',
+    ];
+    setWebsites(fakeWebsites);
+  };
+
+  const generateFakeResearchResults = () => {
+    const fakeResults = `
+# ${query} - Market Research Analysis
+
+## Initial Findings
+I'm starting my research by looking into the different aspects of ${query} that would be relevant for marketing intelligence.
+
+## Market Overview
+Currently focusing on the market landscape to understand its dynamics and opportunities, especially when analyzing the competitive environment. Looking into the different segments and potential growth areas.
+
+## Next Steps
+Next, I plan to investigate user demographics and then identify the major brands that compete in this space. This will help compare the different options available in the market.
+    `;
+    setResearchResults(fakeResults);
+  };
+
+  const handleSectionChange = (section: string) => {
+    setActiveSection(section);
+    toast.info(`Switching to ${section} analysis`);
+  };
+
+  return (
+    <div className="min-h-screen bg-background flex flex-col">
+      <Navbar />
+      
+      <div className="flex-1 flex">
+        <SidebarProvider defaultOpen={true}>
+          <Sidebar className="border-r border-border">
+            <SidebarContent>
+              <SidebarGroup>
+                <SidebarGroupLabel>Data Retrieval</SidebarGroupLabel>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Keywords" isActive={activeSection === 'keywords'} onClick={() => handleSectionChange('keywords')}>
+                      <Activity className="mr-2" />
+                      <span>Keywords</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Competition" isActive={activeSection === 'competition'} onClick={() => handleSectionChange('competition')}>
+                      <Users className="mr-2" />
+                      <span>Competition</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Trends" isActive={activeSection === 'trends'} onClick={() => handleSectionChange('trends')}>
+                      <TrendingUp className="mr-2" />
+                      <span>Trends</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroup>
+              
+              <SidebarGroup>
+                <SidebarGroupLabel>Data Analysis</SidebarGroupLabel>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Keyword Analysis" isActive={activeSection === 'keyword-analysis'} onClick={() => handleSectionChange('keyword-analysis')}>
+                      <PieChart className="mr-2" />
+                      <span>Keyword Analysis</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Competitor Analysis" isActive={activeSection === 'competitor-analysis'} onClick={() => handleSectionChange('competitor-analysis')}>
+                      <BarChart2 className="mr-2" />
+                      <span>Competitor Analysis</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Trend Analysis" isActive={activeSection === 'trend-analysis'} onClick={() => handleSectionChange('trend-analysis')}>
+                      <TrendingUp className="mr-2" />
+                      <span>Trend Analysis</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroup>
+              
+              <SidebarGroup>
+                <SidebarGroupLabel>Deep Research</SidebarGroupLabel>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Deep Reasoning" isActive={activeSection === 'deep-reasoning'} onClick={() => handleSectionChange('deep-reasoning')}>
+                      <Layers className="mr-2" />
+                      <span>Deep Reasoning</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroup>
+              
+              <SidebarGroup>
+                <SidebarGroupLabel>Reporting</SidebarGroupLabel>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton tooltip="Market Research Reports" isActive={activeSection === 'market-research-reports'} onClick={() => handleSectionChange('market-research-reports')}>
+                      <FileText className="mr-2" />
+                      <span>Market Research Reports</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroup>
+            </SidebarContent>
+          </Sidebar>
+          
+          <div className="flex-1 overflow-auto p-6">
+            <div className="max-w-7xl mx-auto">
+              <div className="mb-6 flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <SidebarTrigger className="lg:hidden" />
+                  <div>
+                    <h1 className="text-2xl font-bold text-white">{query}</h1>
+                    <p className="text-gray-400">Marketing Intelligence Analysis</p>
+                  </div>
+                </div>
+                
+                <Command className="w-full max-w-lg bg-card/80 rounded-lg border border-border">
+                  <CommandInput 
+                    placeholder="Refine your search query..." 
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    className="h-10"
+                  />
+                </Command>
+              </div>
+              
+              {isLoading ? (
+                <div className="py-20 flex flex-col items-center justify-center">
+                  <div className="h-12 w-12 rounded-full border-4 border-t-sirius-500 border-sirius-500/30 animate-spin mb-4"></div>
+                  <h3 className="text-xl font-medium text-white">Analyzing Data</h3>
+                  <p className="text-gray-400 mt-2">Our LLM research agents are conducting deep analysis...</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2 space-y-6">
+                    <Card className="bg-card/80 backdrop-blur-sm border-border">
+                      <CardContent className="p-6">
+                        <div className="flex items-center space-x-2 mb-4">
+                          <Sparkles className="w-5 h-5 text-sirius-400" />
+                          <h3 className="text-lg font-medium text-white">Research Analysis</h3>
+                        </div>
+                        <div className="prose prose-invert max-w-none">
+                          <pre className="bg-space-800/50 p-4 rounded-lg overflow-auto text-sm">
+                            {researchResults}
+                          </pre>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    
+                    {activeSection === 'keywords' && (
+                      <Card className="bg-card/80 backdrop-blur-sm border-border">
+                        <CardContent className="p-6">
+                          <div className="flex items-center space-x-2 mb-4">
+                            <Activity className="w-5 h-5 text-sirius-400" />
+                            <h3 className="text-lg font-medium text-white">Top Keywords</h3>
+                          </div>
+                          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            {Array.from({length: 9}).map((_, i) => (
+                              <div key={i} className="bg-space-800/50 p-3 rounded-lg">
+                                <div className="font-medium">{query.split(' ')[0]} trend {i+1}</div>
+                                <div className="text-sm text-gray-400">Score: {Math.floor(Math.random() * 100)}</div>
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    )}
+                    
+                    {activeSection === 'competition' && (
+                      <Card className="bg-card/80 backdrop-blur-sm border-border">
+                        <CardContent className="p-6">
+                          <div className="flex items-center space-x-2 mb-4">
+                            <Users className="w-5 h-5 text-sirius-400" />
+                            <h3 className="text-lg font-medium text-white">Competitor Analysis</h3>
+                          </div>
+                          <div className="space-y-4">
+                            {Array.from({length: 5}).map((_, i) => (
+                              <div key={i} className="bg-space-800/50 p-4 rounded-lg flex justify-between items-center">
+                                <div>
+                                  <div className="font-medium">Competitor {i+1}</div>
+                                  <div className="text-sm text-gray-400">Market share: {(Math.random() * 20 + 5).toFixed(1)}%</div>
+                                </div>
+                                <div className="bg-sirius-500/20 text-sirius-400 py-1 px-3 rounded-full text-sm">
+                                  {['Leader', 'Strong', 'Growing', 'Stable', 'Declining'][i]}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    )}
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <Card className="bg-card/80 backdrop-blur-sm border-border">
+                      <CardContent className="p-6">
+                        <div className="flex items-center space-x-2 mb-4">
+                          <Database className="w-5 h-5 text-sirius-400" />
+                          <h3 className="text-lg font-medium text-white">Researching Websites</h3>
+                        </div>
+                        <div className="space-y-2">
+                          {websites.slice(0, 8).map((website, i) => (
+                            <div key={i} className="bg-space-800/50 p-2 rounded-lg flex items-center">
+                              <div className="w-6 h-6 rounded-full bg-sirius-500/20 flex items-center justify-center mr-3 text-xs text-sirius-400">
+                                {i+1}
+                              </div>
+                              <span className="text-sm">{website}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <Button variant="ghost" size="sm" className="mt-3 w-full text-gray-400 hover:text-white">
+                          View all {websites.length} sources <ChevronRight className="ml-1 w-4 h-4" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="bg-card/80 backdrop-blur-sm border-border">
+                      <CardContent className="p-6">
+                        <div className="flex items-center space-x-2 mb-4">
+                          <TrendingUp className="w-5 h-5 text-sirius-400" />
+                          <h3 className="text-lg font-medium text-white">Market Trends</h3>
+                        </div>
+                        <div className="space-y-3">
+                          {Array.from({length: 4}).map((_, i) => (
+                            <div key={i} className="bg-space-800/50 p-3 rounded-lg">
+                              <div className="font-medium">Trend {i+1}</div>
+                              <div className="text-sm text-gray-400 mt-1">
+                                {["Increasing market adoption", "Shifting consumer preferences", "Technological innovation", "Regulatory changes"][i]}
+                              </div>
+                              <div className="mt-2 h-2 bg-space-700/50 rounded-full overflow-hidden">
+                                <div 
+                                  className="h-full bg-sirius-500 rounded-full" 
+                                  style={{ width: `${Math.floor(Math.random() * 60) + 30}%` }}
+                                ></div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </SidebarProvider>
+      </div>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default MarketResearchConsole;
