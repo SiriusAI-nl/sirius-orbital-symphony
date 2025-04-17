@@ -9,56 +9,12 @@ const Collapsible = React.forwardRef<
     className?: string
   }
 >(({ className, ...props }, ref) => {
-  // Create a ref to track hover state
-  const collapsibleRef = React.useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = React.useState(false)
-  
-  // If we have a class that includes "hover:open", open on hover
-  const hasHoverOpen = className?.includes("hover:open")
-  
-  // Add debounce for hover to prevent flickering
-  const [debouncedIsHovered, setDebouncedIsHovered] = React.useState(false)
-  
-  React.useEffect(() => {
-    if (!hasHoverOpen) return
-    
-    // Use timeout to debounce hover state changes
-    const timer = setTimeout(() => {
-      setDebouncedIsHovered(isHovered)
-    }, 50) // Small delay to prevent flickering
-    
-    return () => clearTimeout(timer)
-  }, [isHovered, hasHoverOpen])
-  
-  React.useEffect(() => {
-    if (!hasHoverOpen || !collapsibleRef.current) return
-    
-    // Set open state based on debounced hover when the hover:open class is present
-    if (hasHoverOpen && debouncedIsHovered && props.onOpenChange) {
-      props.onOpenChange(true)
-    }
-    
-    // Only close on mouse leave if we're using hover functionality
-    if (hasHoverOpen && !debouncedIsHovered && props.onOpenChange) {
-      props.onOpenChange(false)
-    }
-  }, [debouncedIsHovered, props.onOpenChange, hasHoverOpen, props.open])
-  
   return (
     <CollapsiblePrimitive.Root 
       ref={ref}
       className={cn(className)}
       {...props}
-    >
-      <div
-        ref={collapsibleRef}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="w-full"
-      >
-        {props.children}
-      </div>
-    </CollapsiblePrimitive.Root>
+    />
   )
 })
 Collapsible.displayName = "Collapsible"
