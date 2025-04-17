@@ -8,7 +8,8 @@ import {
   ShieldCheckIcon, 
   WandSparklesIcon,
   ArrowRightIcon,
-  BarChartIcon
+  BarChartIcon,
+  SearchIcon
 } from 'lucide-react';
 
 import Navbar from '@/components/Navbar';
@@ -27,7 +28,7 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-12 md:pt-32 md:pb-16 relative">
+      <section className="pt-24 pb-8 md:pt-32 md:pb-12 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight gradient-text">
@@ -55,7 +56,7 @@ const Index = () => {
       </section>
       
       {/* Features Section */}
-      <section id="features" className="py-12 md:py-16 relative">
+      <section id="features" className="py-10 md:py-14 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-10">
             <div className="inline-block p-1.5 bg-sirius-500/10 rounded-lg mb-2">
@@ -103,7 +104,7 @@ const Index = () => {
       </section>
       
       {/* Multi-Agent Visualization Section */}
-      <section id="solutions" className="py-16 md:py-24 relative">
+      <section id="solutions" className="py-12 md:py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="md:flex md:items-center md:space-x-12">
             <div className="md:w-1/2 mb-10 md:mb-0">
@@ -130,14 +131,61 @@ const Index = () => {
       </section>
       
       {/* Workflow Section */}
-      <section id="workflow" className="py-16 md:py-24 relative">
+      <section id="workflow" className="py-12 md:py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <WorkflowAutomation />
         </div>
       </section>
       
+      {/* Market Research Section */}
+      <section id="market-research" className="py-12 md:py-16 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="md:flex md:items-center md:space-x-12">
+            <div className="md:w-1/2 glass-card p-4 mb-10 md:mb-0">
+              <div className="aspect-w-16 aspect-h-9 relative overflow-hidden rounded-lg">
+                <div className="absolute inset-0 flex items-center justify-center bg-space-800/50">
+                  <div className="grid grid-cols-2 gap-4 p-4 w-full h-full">
+                    <div className="glass-card p-3 flex flex-col items-center justify-center">
+                      <SearchIcon className="w-8 h-8 text-sirius-400 mb-2" />
+                      <div className="h-2 bg-sirius-500/20 w-2/3 rounded-full mb-1"></div>
+                      <div className="h-2 bg-sirius-500/20 w-1/2 rounded-full"></div>
+                    </div>
+                    <div className="glass-card p-3 flex items-center justify-center">
+                      <div className="w-full h-24 bg-sirius-500/10 rounded-lg"></div>
+                    </div>
+                    <div className="glass-card p-3 flex items-center justify-center col-span-2">
+                      <div className="grid grid-cols-3 gap-2 w-full">
+                        <div className="h-12 bg-sirius-500/20 rounded-lg"></div>
+                        <div className="h-12 bg-sirius-500/30 rounded-lg"></div>
+                        <div className="h-12 bg-sirius-500/10 rounded-lg"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-1/2">
+              <div className="inline-block p-2 bg-sirius-500/10 rounded-lg mb-3">
+                <SearchIcon className="w-6 h-6 text-sirius-400" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Market Research That's Light-Years Ahead</h2>
+              <p className="text-lg text-gray-300 mb-6">
+                Our AI-powered market research tools help you navigate the galaxy of data to discover actionable insights about your market, competitors, and customers.
+              </p>
+              <p className="text-lg text-gray-300 mb-8">
+                Deploy intelligent agents to collect, analyze, and visualize market trends, sentiment analysis, and competitive intelligence with accuracy that would make Deep Thought jealous.
+              </p>
+              <Button className="btn-primary flex items-center">
+                <span>Explore Market Research</span>
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Pricing Section */}
-      <section id="pricing" className="py-16 md:py-24 relative">
+      <section id="pricing" className="py-12 md:py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Simple, Transparent Pricing</h2>
@@ -206,7 +254,7 @@ const Index = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 md:py-24 relative">
+      <section className="py-12 md:py-16 relative">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="glass-card p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to orchestrate the future?</h2>
