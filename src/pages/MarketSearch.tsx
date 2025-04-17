@@ -128,7 +128,7 @@ const MarketSearch = () => {
                 <div className="text-left">
                   <h3 className="text-lg font-medium text-white">LLM research agents, specialised for marketing!</h3>
                   <p className="text-gray-300 mt-1">
-                    Our advanced deep research agents do research that's unseen of all the way up to Ursa Minor. Our highly customised research & reasoning agents deliver insights tailored to your specific market needs. Yes really :-)
+                    Our advanced deep research agents do research that's unseen of all the way up to Ursa Minor. Our highly customised research & reasoning agents deliver insights tailored to your specific marketing needs. Yes really :-)
                   </p>
                 </div>
               </div>
