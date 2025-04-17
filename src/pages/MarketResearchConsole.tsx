@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, Layers, Book, FileText, Search, Sparkles, MessageSquare, Send, PlusCircle, ChevronDown } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -22,6 +23,7 @@ import {
   SidebarFooter,
 } from '@/components/ui/sidebar';
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 
 const MarketResearchConsole = () => {
   const location = useLocation();
@@ -259,70 +261,85 @@ Next, I plan to investigate user demographics and then identify the major brands
               </div>
             </div>
             
-            <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-hidden">
-              <div className="flex flex-col h-full overflow-hidden bg-card/80 backdrop-blur-sm border-border rounded-lg border">
-                <ScrollArea className="flex-1 p-4">
-                  <div className="space-y-4">
-                    {messages.length === 0 ? (
-                      <div className="h-full flex flex-col items-center justify-center text-center p-6">
-                        <div className="w-16 h-16 rounded-full bg-sirius-500/20 flex items-center justify-center mb-4">
-                          <MessageSquare className="w-8 h-8 text-sirius-400" />
+            <ResizablePanelGroup
+              direction="horizontal"
+              className="flex-1 overflow-hidden"
+            >
+              <ResizablePanel 
+                defaultSize={40} 
+                minSize={30}
+                className="h-full overflow-hidden"
+              >
+                <div className="flex flex-col h-full bg-card/80 backdrop-blur-sm border-border rounded-lg border">
+                  <ScrollArea className="flex-1 p-4">
+                    <div className="space-y-4">
+                      {messages.length === 0 ? (
+                        <div className="h-full flex flex-col items-center justify-center text-center p-6">
+                          <div className="w-16 h-16 rounded-full bg-sirius-500/20 flex items-center justify-center mb-4">
+                            <MessageSquare className="w-8 h-8 text-sirius-400" />
+                          </div>
+                          <h3 className="text-xl font-medium text-white mb-2">Welcome to SiriusAI</h3>
+                          <p className="text-gray-400 max-w-md">
+                            Start a conversation to generate marketing research insights
+                          </p>
                         </div>
-                        <h3 className="text-xl font-medium text-white mb-2">Welcome to SiriusAI</h3>
-                        <p className="text-gray-400 max-w-md">
-                          Start a conversation to generate marketing research insights
-                        </p>
-                      </div>
-                    ) : (
-                      messages.map((message, index) => (
-                        <div 
-                          key={index} 
-                          className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                        >
+                      ) : (
+                        messages.map((message, index) => (
                           <div 
-                            className={`max-w-3/4 rounded-lg p-3 ${
-                              message.type === 'user' 
-                                ? 'bg-sirius-500 text-white' 
-                                : 'bg-space-800 text-white'
-                            }`}
+                            key={index} 
+                            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                           >
-                            <div className="text-sm mb-1">{message.content}</div>
-                            <div className="text-xs opacity-70 text-right">{formatTime(message.timestamp)}</div>
+                            <div 
+                              className={`max-w-3/4 rounded-lg p-3 ${
+                                message.type === 'user' 
+                                  ? 'bg-sirius-500 text-white' 
+                                  : 'bg-space-800 text-white'
+                              }`}
+                            >
+                              <div className="text-sm mb-1">{message.content}</div>
+                              <div className="text-xs opacity-70 text-right">{formatTime(message.timestamp)}</div>
+                            </div>
+                          </div>
+                        ))
+                      )}
+                      {isLoading && (
+                        <div className="flex justify-start">
+                          <div className="bg-space-800 text-white rounded-lg p-3">
+                            <div className="flex space-x-2">
+                              <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce"></div>
+                              <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                              <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                            </div>
                           </div>
                         </div>
-                      ))
-                    )}
-                    {isLoading && (
-                      <div className="flex justify-start">
-                        <div className="bg-space-800 text-white rounded-lg p-3">
-                          <div className="flex space-x-2">
-                            <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce"></div>
-                            <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                            <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
+                  </ScrollArea>
+                  
+                  <div className="p-4 border-t border-border">
+                    <form onSubmit={handleMessageSubmit} className="flex space-x-2">
+                      <Input
+                        placeholder="Ask a follow-up question..."
+                        value={messageInput}
+                        onChange={(e) => setMessageInput(e.target.value)}
+                        className="flex-1 bg-space-800/50"
+                      />
+                      <Button type="submit" size="icon" disabled={isLoading || !messageInput.trim()}>
+                        <Send className="h-4 w-4" />
+                      </Button>
+                    </form>
                   </div>
-                </ScrollArea>
-                
-                <div className="p-4 border-t border-border">
-                  <form onSubmit={handleMessageSubmit} className="flex space-x-2">
-                    <Input
-                      placeholder="Ask a follow-up question..."
-                      value={messageInput}
-                      onChange={(e) => setMessageInput(e.target.value)}
-                      className="flex-1 bg-space-800/50"
-                    />
-                    <Button type="submit" size="icon" disabled={isLoading || !messageInput.trim()}>
-                      <Send className="h-4 w-4" />
-                    </Button>
-                  </form>
                 </div>
-              </div>
+              </ResizablePanel>
               
-              <div className="flex flex-col h-full overflow-hidden">
-                <Card className="flex-1 overflow-hidden bg-card/80 backdrop-blur-sm border-border">
+              <ResizableHandle withHandle />
+              
+              <ResizablePanel 
+                defaultSize={60}
+                minSize={40}
+                className="h-full overflow-hidden"
+              >
+                <Card className="h-full overflow-hidden bg-card/80 backdrop-blur-sm border-border">
                   <ScrollArea className="h-full">
                     <CardContent className="p-6">
                       {isLoading ? (
@@ -386,8 +403,8 @@ Next, I plan to investigate user demographics and then identify the major brands
                     </CardContent>
                   </ScrollArea>
                 </Card>
-              </div>
-            </div>
+              </ResizablePanel>
+            </ResizablePanelGroup>
           </div>
         </SidebarProvider>
       </div>
