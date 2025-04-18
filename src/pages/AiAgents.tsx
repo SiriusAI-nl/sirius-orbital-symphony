@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CpuIcon, ArrowRightIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -22,10 +21,10 @@ const AiAgents = () => {
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">AI Agents Platform</h2>
               <p className="text-lg text-gray-300 mb-6">
-                Deploy specialized AI agents that work together to solve complex problems. Each agent is designed for a specific task, creating a powerful system of collaboration.
+                Deploy specialized AI agents that autonomously collaborate to handle complex workflows. Each agent is designed to work independently while seamlessly coordinating with others.
               </p>
               <p className="text-lg text-gray-300 mb-8">
-                From data analysis to content generation, our multi-agent system delivers results that surpass traditional single-agent solutions by orders of magnitude.
+                From data analysis to strategic decision-making, our autonomous multi-agent system delivers results that surpass traditional solutions requiring constant human intervention.
               </p>
               <Button className="btn-primary flex items-center space-x-2">
                 <span>Explore AI Agents</span>

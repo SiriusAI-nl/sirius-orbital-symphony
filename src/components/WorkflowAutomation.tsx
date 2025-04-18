@@ -30,35 +30,35 @@ const WorkflowAutomation: React.FC = () => {
         <div className="inline-block p-2 bg-sirius-500/10 rounded-lg mb-3">
           <RefreshCwIcon className="w-6 h-6 text-sirius-400" />
         </div>
-        <h2 className="text-3xl font-bold text-white">Workflow Automation</h2>
+        <h2 className="text-3xl font-bold text-white">Autonomous Workflow Automation</h2>
         <p className="text-gray-300 mt-3 max-w-2xl mx-auto">
-          Our platform handles the entire workflow from input to output, making multi-agent orchestration almost as satisfying as a Pan Galactic Gargle Blaster.
+          Our platform autonomously handles the entire workflow from input to output, making multi-agent orchestration almost as satisfying as a Pan Galactic Gargle Blaster.
         </p>
       </div>
       
       <div className="max-w-xl mx-auto">
         <WorkflowStep 
           number={1} 
-          title="Define Your Tasks" 
-          description="Specify the tasks you need to automate, whether it's data analysis, content generation, or complex decision-making processes."
+          title="Define Your Goals" 
+          description="Specify your desired outcomes, and let our autonomous system handle the complexity of task planning and execution."
         />
         
         <WorkflowStep 
           number={2} 
           title="Configure Agent Roles" 
-          description="Select specialized agents from our library or create custom ones for your specific workflow needs."
+          description="Select specialized agents that will autonomously collaborate to achieve your goals with minimal oversight needed."
         />
         
         <WorkflowStep 
           number={3} 
-          title="Set Communication Protocols" 
-          description="Define how your agents interact with each other and exchange information - unlike the Babel Fish, no translation needed."
+          title="Autonomous Communication" 
+          description="Agents intelligently coordinate and adapt their interactions to optimize workflow execution - no manual orchestration required."
         />
         
         <WorkflowStep 
           number={4} 
-          title="Launch and Monitor" 
-          description="Deploy your multi-agent system and watch as tasks are automatically executed with our real-time monitoring dashboard."
+          title="Monitor Progress" 
+          description="Watch as your multi-agent system autonomously executes complex workflows through our real-time monitoring dashboard."
           isLast
         />
       </div>

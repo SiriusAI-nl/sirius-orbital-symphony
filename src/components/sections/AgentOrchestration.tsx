@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRightIcon, CpuIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,15 +14,15 @@ const AgentOrchestration = () => {
           </div>
           
           <h2 className="text-4xl font-bold bg-gradient-to-r from-white via-sirius-200 to-sirius-400 text-transparent bg-clip-text mb-6">
-            Orchestrate Multiple Agents Like a Cosmic Symphony
+            Autonomously Handle Complex Workflows Like a Cosmic Symphony
           </h2>
           
           <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-            Our platform enables seamless coordination between different AI agents, each specialized for specific tasks. Together, they form a powerful system that can handle complex workflows.
+            Our platform enables autonomous coordination between specialized AI agents. Together, they form a self-managing system that handles complex workflows with minimal human oversight.
           </p>
           
           <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-            Whether you need data analysis, content generation, decision making, or all of the above, our multi-agent system works in harmony to deliver results that are light-years ahead of single-agent solutions.
+            From data analysis to decision making, our autonomous multi-agent system works in harmony to deliver results that are light-years ahead of traditional solutions requiring constant manual intervention.
           </p>
           
           <Button 
