@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { PlusCircle, Search } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -130,13 +129,13 @@ Next, I plan to investigate user demographics and then identify the major brands
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
       
-      <main className="flex flex-1 pt-16">
+      <div className="flex-1 flex flex-col mt-16 mb-auto">
         <SidebarProvider defaultOpen={true}>
-          <div className="flex flex-1 h-[calc(100vh-8rem)]">
-            <Sidebar className="border-r border-border">
+          <div className="flex flex-1 h-[calc(100vh-10rem)]">
+            <Sidebar className="border-r border-border h-full">
               <div className="flex flex-col h-full">
                 <ScrollArea className="flex-1">
                   <SidebarContent className="py-4">
@@ -163,8 +162,8 @@ Next, I plan to investigate user demographics and then identify the major brands
               </div>
             </Sidebar>
             
-            <div className="flex-1 overflow-hidden">
-              <div className="flex items-center justify-between p-4">
+            <div className="flex-1 overflow-hidden flex flex-col">
+              <div className="flex items-center justify-between p-4 border-b border-border">
                 <div className="flex items-center space-x-4">
                   <SidebarTrigger className="lg:hidden" />
                   <div>
@@ -186,12 +185,11 @@ Next, I plan to investigate user demographics and then identify the major brands
               
               <ResizablePanelGroup
                 direction="horizontal"
-                className="h-[calc(100vh-12rem)] overflow-hidden"
+                className="flex-1"
               >
                 <ResizablePanel 
                   defaultSize={40} 
                   minSize={30}
-                  className="h-full overflow-hidden"
                 >
                   <ChatInterface
                     messages={messages}
@@ -207,7 +205,6 @@ Next, I plan to investigate user demographics and then identify the major brands
                 <ResizablePanel 
                   defaultSize={60}
                   minSize={40}
-                  className="h-full overflow-hidden"
                 >
                   <ResearchResults
                     isLoading={isLoading}
@@ -219,7 +216,7 @@ Next, I plan to investigate user demographics and then identify the major brands
             </div>
           </div>
         </SidebarProvider>
-      </main>
+      </div>
       
       <Footer />
     </div>

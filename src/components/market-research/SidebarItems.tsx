@@ -55,7 +55,7 @@ const SidebarItems = ({
   ];
 
   return (
-    <>
+    <div className="w-full">
       {menuItems.map((menuGroup, index) => (
         <SidebarGroup key={index} className="mb-4">
           <Collapsible 
@@ -117,7 +117,7 @@ const SidebarItems = ({
           </Collapsible>
         </SidebarGroup>
       ))}
-    </>
+    </div>
   );
 };
 
