@@ -33,24 +33,17 @@ const Index = () => {
           <div className="md:flex md:items-center md:space-x-12">
             <div className="md:w-1/2 glass-card p-4 mb-10 md:mb-0">
               <div className="aspect-w-16 aspect-h-9 relative overflow-hidden rounded-lg">
-                <div className="absolute inset-0 flex items-center justify-center bg-space-800/50">
-                  <div className="grid grid-cols-2 gap-4 p-4 w-full h-full">
-                    <div className="glass-card p-3 flex flex-col items-center justify-center">
-                      <SearchIcon className="w-8 h-8 text-sirius-400 mb-2" />
-                      <div className="h-2 bg-sirius-500/20 w-2/3 rounded-full mb-1"></div>
-                      <div className="h-2 bg-sirius-500/20 w-1/2 rounded-full"></div>
-                    </div>
-                    <div className="glass-card p-3 flex items-center justify-center">
-                      <div className="w-full h-24 bg-sirius-500/10 rounded-lg"></div>
-                    </div>
-                    <div className="glass-card p-3 flex items-center justify-center col-span-2">
-                      <div className="grid grid-cols-3 gap-2 w-full">
-                        <div className="h-12 bg-sirius-500/20 rounded-lg"></div>
-                        <div className="h-12 bg-sirius-500/30 rounded-lg"></div>
-                        <div className="h-12 bg-sirius-500/10 rounded-lg"></div>
-                      </div>
-                    </div>
-                  </div>
+                <div 
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{
+                    backgroundImage: `url('/lovable-uploads/155c3c45-0594-4b1e-83cb-7f8f1096664e.png')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    opacity: 0.6,
+                    filter: 'blur(1px)',
+                  }}
+                >
+                  <div className="absolute inset-0 bg-space-900/40 backdrop-blur-sm"></div>
                 </div>
               </div>
             </div>
