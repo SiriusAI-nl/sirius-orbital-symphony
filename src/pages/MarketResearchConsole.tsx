@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Database, Activity, Users, TrendingUp, BarChart2, Layers, Book, FileText, Search, Sparkles, MessageSquare, Send, PlusCircle, ChevronDown } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -184,7 +183,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                       }))}
                       className="w-full"
                     >
-                      <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-3 text-base text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors group">
+                      <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-base bg-space-800/40 hover:bg-space-800/60 rounded-lg transition-colors group">
                         <div className="flex items-center">
                           {menuGroup.icon}
                           <span className="font-medium ml-2">{menuGroup.title}</span>
@@ -196,8 +195,8 @@ Next, I plan to investigate user demographics and then identify the major brands
                           {menuGroup.items.map((item, itemIndex) => (
                             <SidebarMenuItem key={itemIndex} className="group">
                               {menuGroup.title === 'Research Pipeline' ? (
-                                <SidebarMenuButton className="group/submenu relative">
-                                  <div className="flex items-center">
+                                <SidebarMenuButton className="group/submenu relative hover:bg-space-800/40 rounded-lg transition-all duration-200">
+                                  <div className="flex items-center px-4 py-2">
                                     {'icon' in item && item.icon}
                                     <span className="ml-2">{item.label}</span>
                                   </div>
@@ -207,7 +206,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                                 <SidebarMenuButton 
                                   isActive={activeSession === item.id}
                                   onClick={() => handleSessionSelect(item.id as number)}
-                                  className="flex items-center"
+                                  className="flex items-center px-4 py-2 hover:bg-space-800/40 rounded-lg transition-all duration-200"
                                 >
                                   <MessageSquare className="mr-2 h-4 w-4 text-sirius-400" />
                                   <div className="flex flex-col items-start">
@@ -221,7 +220,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                         </SidebarMenu>
                         
                         {menuGroup.title === 'Chat History' && (
-                          <Button variant="ghost" size="sm" className="mt-2 w-full text-gray-400 hover:text-white">
+                          <Button variant="ghost" size="sm" className="mt-2 w-full text-gray-400 hover:text-white hover:bg-space-800/40">
                             View all history <ChevronRight className="ml-1 w-4 h-4" />
                           </Button>
                         )}
@@ -232,12 +231,10 @@ Next, I plan to investigate user demographics and then identify the major brands
               </SidebarContent>
               
               <SidebarFooter className="mt-auto p-4 border-t border-border sticky bottom-0 bg-sidebar">
-                <div className="flex items-center justify-center">
-                  <Button variant="outline" size="sm" className="w-full">
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    New Research
-                  </Button>
-                </div>
+                <Button variant="outline" size="sm" className="w-full bg-space-800/40 hover:bg-space-800/60 border-sirius-500/20">
+                  <PlusCircle className="mr-2 h-4 w-4" />
+                  New Research
+                </Button>
               </SidebarFooter>
             </ScrollArea>
           </Sidebar>
@@ -247,12 +244,12 @@ Next, I plan to investigate user demographics and then identify the major brands
               <div className="flex items-center space-x-4">
                 <SidebarTrigger className="lg:hidden" />
                 <div>
-                  <h1 className="text-2xl font-bold text-white">{query || "New Research"}</h1>
+                  <h1 className="text-2xl font-bold bg-gradient-to-r from-white via-sirius-200 to-sirius-400 text-transparent bg-clip-text">{query || "New Research"}</h1>
                   <p className="text-gray-400">Marketing Intelligence Analysis</p>
                 </div>
               </div>
               
-              <div className="max-w-md bg-card/80 rounded-lg border border-border flex items-center px-3">
+              <div className="max-w-md bg-space-800/40 rounded-lg border border-border/50 flex items-center px-3">
                 <Search className="h-4 w-4 shrink-0 opacity-50 mr-2" />
                 <Input 
                   placeholder="Search your research..." 
@@ -270,7 +267,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                 minSize={30}
                 className="h-full overflow-hidden"
               >
-                <div className="flex flex-col h-full bg-card/80 backdrop-blur-sm border-border rounded-lg border">
+                <div className="flex flex-col h-full bg-space-800/40 backdrop-blur-sm border-border/50 rounded-lg border">
                   <ScrollArea className="flex-1 p-4">
                     <div className="space-y-4">
                       {messages.length === 0 ? (
@@ -293,7 +290,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                               className={`max-w-3/4 rounded-lg p-3 ${
                                 message.type === 'user' 
                                   ? 'bg-sirius-500 text-white' 
-                                  : 'bg-space-800 text-white'
+                                  : 'bg-space-800/60 text-white'
                               }`}
                             >
                               <div className="text-sm mb-1">{message.content}</div>
@@ -304,7 +301,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                       )}
                       {isLoading && (
                         <div className="flex justify-start">
-                          <div className="bg-space-800 text-white rounded-lg p-3">
+                          <div className="bg-space-800/60 text-white rounded-lg p-3">
                             <div className="flex space-x-2">
                               <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce"></div>
                               <div className="h-2 w-2 bg-sirius-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
@@ -316,15 +313,15 @@ Next, I plan to investigate user demographics and then identify the major brands
                     </div>
                   </ScrollArea>
                   
-                  <div className="p-4 border-t border-border">
+                  <div className="p-4 border-t border-border/50">
                     <form onSubmit={handleMessageSubmit} className="flex space-x-2">
                       <Input
                         placeholder="Ask a follow-up question..."
                         value={messageInput}
                         onChange={(e) => setMessageInput(e.target.value)}
-                        className="flex-1 bg-space-800/50"
+                        className="flex-1 bg-space-800/50 border-border/50"
                       />
-                      <Button type="submit" size="icon" disabled={isLoading || !messageInput.trim()}>
+                      <Button type="submit" size="icon" disabled={isLoading || !messageInput.trim()} className="bg-sirius-500 hover:bg-sirius-600">
                         <Send className="h-4 w-4" />
                       </Button>
                     </form>
@@ -339,7 +336,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                 minSize={40}
                 className="h-full overflow-hidden"
               >
-                <Card className="h-full overflow-hidden bg-card/80 backdrop-blur-sm border-border">
+                <Card className="h-full overflow-hidden bg-space-800/40 backdrop-blur-sm border-border/50">
                   <ScrollArea className="h-full">
                     <CardContent className="p-6">
                       {isLoading ? (
@@ -355,7 +352,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                             <h3 className="text-lg font-medium text-white">Research Analysis</h3>
                           </div>
                           <div className="prose prose-invert max-w-none mb-6">
-                            <pre className="bg-space-800/50 p-4 rounded-lg overflow-auto text-sm">
+                            <pre className="bg-space-900/50 p-4 rounded-lg overflow-auto text-sm border border-border/50">
                               {researchResults}
                             </pre>
                           </div>
@@ -368,7 +365,7 @@ Next, I plan to investigate user demographics and then identify the major brands
                               </div>
                               <div className="grid grid-cols-2 gap-2">
                                 {websites.slice(0, 6).map((website, i) => (
-                                  <div key={i} className="bg-space-800/50 p-2 rounded-lg flex items-center text-sm">
+                                  <div key={i} className="bg-space-900/50 p-2 rounded-lg flex items-center text-sm border border-border/50">
                                     <span className="truncate">{website}</span>
                                   </div>
                                 ))}
@@ -382,12 +379,12 @@ Next, I plan to investigate user demographics and then identify the major brands
                               </div>
                               <div className="space-y-2">
                                 {Array.from({length: 3}).map((_, i) => (
-                                  <div key={i} className="bg-space-800/50 p-3 rounded-lg">
+                                  <div key={i} className="bg-space-900/50 p-3 rounded-lg border border-border/50">
                                     <div className="font-medium text-sm">Trend {i+1}</div>
                                     <div className="text-xs text-gray-400 mt-1">
                                       {["Increasing market adoption", "Shifting consumer preferences", "Technological innovation"][i]}
                                     </div>
-                                    <div className="mt-2 h-2 bg-space-700/50 rounded-full overflow-hidden">
+                                    <div className="mt-2 h-2 bg-space-800/50 rounded-full overflow-hidden">
                                       <div 
                                         className="h-full bg-sirius-500 rounded-full" 
                                         style={{ width: `${Math.floor(Math.random() * 60) + 30}%` }}
