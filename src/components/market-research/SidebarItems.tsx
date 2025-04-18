@@ -35,7 +35,7 @@ const SidebarItems = ({
 }: SidebarItemsProps) => {
   const menuItems = [
     { 
-      title: 'Insight Pipeline', 
+      title: 'Business Insight Pipeline', 
       icon: <Activity className="mr-2 h-5 w-5 text-sirius-400" />,
       items: [
         { label: 'Keywords', icon: <Activity className="mr-2 h-4 w-4 text-sirius-400" /> },

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { SearchIcon, ArrowRightIcon, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,7 +9,7 @@ import Footer from '@/components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "sonner";
 
-const MarketSearch = () => {
+const BusinessSearch = () => {
   const [query, setQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const navigate = useNavigate();
@@ -23,11 +24,10 @@ const MarketSearch = () => {
     
     setIsSearching(true);
     
-    // Simulate search delay
     setTimeout(() => {
       setIsSearching(false);
-      toast.success(`Market insight analysis for "${query}" initialized`);
-      navigate('/market-insights-console', { state: { query } });
+      toast.success(`Business insight analysis for "${query}" initialized`);
+      navigate('/business-insights-console', { state: { query } });
     }, 1500);
   };
 
@@ -57,10 +57,10 @@ const MarketSearch = () => {
                 <Sparkles className="w-5 h-5 text-sirius-400" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text">
-                Market Intelligence
+                Business Intelligence
               </h1>
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-                Discover insights, analyze competitors, and find new opportunities with AI-powered market intelligence
+                Discover insights, analyze competitors, and find new opportunities with AI-powered business intelligence
               </p>
             </div>
             
@@ -142,4 +142,4 @@ const MarketSearch = () => {
   );
 };
 
-export default MarketSearch;
+export default BusinessSearch;

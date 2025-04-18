@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { ArrowRightIcon, BarChartIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const MarketInsightsHero = () => {
+const BusinessInsightsHero = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="md:flex md:items-center md:space-x-12">
@@ -27,15 +26,15 @@ const MarketInsightsHero = () => {
           <div className="inline-block p-2 bg-sirius-500/10 rounded-lg mb-3">
             <BarChartIcon className="w-6 h-6 text-sirius-400" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Market Intelligence That's Light-Years Ahead</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Business Intelligence That's Light-Years Ahead</h2>
           <p className="text-lg text-gray-300 mb-6">
-            Our AI-powered market intelligence tools help you navigate the galaxy of data to discover actionable insights about your market, competitors, and customers.
+            Our AI-powered business intelligence tools help you navigate the galaxy of data to discover actionable insights about your market, competitors, and customers.
           </p>
           <p className="text-lg text-gray-300 mb-8">
-            Deploy intelligent agents to collect, analyze, and visualize market trends, sentiment analysis, and competitive intelligence with accuracy that would make Deep Thought jealous.
+            Deploy intelligent agents to collect, analyze, and visualize business trends, sentiment analysis, and competitive intelligence with accuracy that would make Deep Thought jealous.
           </p>
           <Button className="btn-primary flex items-center">
-            <span>Explore Market Intelligence</span>
+            <span>Explore Business Intelligence</span>
             <ArrowRightIcon className="w-4 h-4 ml-2" />
           </Button>
         </div>
@@ -44,4 +43,4 @@ const MarketInsightsHero = () => {
   );
 };
 
-export default MarketInsightsHero;
+export default BusinessInsightsHero;

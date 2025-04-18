@@ -1,12 +1,13 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import MarketResearch from "./pages/MarketResearch";
-import MarketSearch from "./pages/MarketSearch";
-import MarketResearchConsole from "./pages/MarketResearchConsole";
+import BusinessResearch from "./pages/MarketResearch";
+import BusinessSearch from "./pages/MarketSearch";
+import BusinessResearchConsole from "./pages/MarketResearchConsole";
 import AiAgents from "./pages/AiAgents";
 import Workflows from "./pages/Workflows";
 import Features from "./pages/Features";
@@ -23,9 +24,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/market-insights" element={<MarketResearch />} />
-          <Route path="/market-search" element={<MarketSearch />} />
-          <Route path="/market-insights-console" element={<MarketResearchConsole />} />
+          <Route path="/business-insights" element={<BusinessResearch />} />
+          <Route path="/business-search" element={<BusinessSearch />} />
+          <Route path="/business-insights-console" element={<BusinessResearchConsole />} />
           <Route path="/ai-agents" element={<AiAgents />} />
           <Route path="/workflows" element={<Workflows />} />
           <Route path="/features" element={<Features />} />

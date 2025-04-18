@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { SearchIcon, ArrowRightIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,15 +6,14 @@ import ConstellationBackground from '@/components/ConstellationBackground';
 import Footer from '@/components/Footer';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const MarketResearch = () => {
+const BusinessInsights = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchQuery = location.state?.query || '';
   
   useEffect(() => {
-    // Log the query if it came from search
     if (searchQuery) {
-      console.log(`Analyzing market for: ${searchQuery}`);
+      console.log(`Analyzing business insights for: ${searchQuery}`);
     }
   }, [searchQuery]);
 
@@ -55,17 +53,17 @@ const MarketResearch = () => {
                 <SearchIcon className="w-6 h-6 text-sirius-400" />
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                {searchQuery ? `Analyzing: ${searchQuery}` : 'Market Research Dashboard'}
+                {searchQuery ? `Analyzing: ${searchQuery}` : 'Business Insights Dashboard'}
               </h2>
               <p className="text-lg text-gray-300 mb-6">
-                Unlock the power of AI-driven market research with our comprehensive toolset. Gather insights, analyze trends, and stay ahead of your competition.
+                Unlock the power of AI-driven business insights with our comprehensive toolset. Gather insights, analyze trends, and stay ahead of your competition.
               </p>
               <p className="text-lg text-gray-300 mb-8">
                 Our platform provides real-time data collection, sentiment analysis, and competitor monitoring to help you make informed business decisions.
               </p>
-              <Link to="/market-search">
+              <Link to="/business-search">
                 <Button className="btn-primary flex items-center">
-                  <span>Start Analyzing Markets</span>
+                  <span>Start Analyzing Business</span>
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -79,4 +77,4 @@ const MarketResearch = () => {
   );
 };
 
-export default MarketResearch;
+export default BusinessInsights;

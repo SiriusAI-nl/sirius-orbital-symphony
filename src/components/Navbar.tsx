@@ -28,8 +28,8 @@ export default function Navbar() {
           
           <div className="hidden md:block">
             <div className="flex items-center space-x-6">
-              <Link to="/market-insights" className="text-gray-300 hover:text-white transition-colors text-base font-bold">
-                Market Insights
+              <Link to="/business-insights" className="text-gray-300 hover:text-white transition-colors text-base font-bold">
+                Business Insights
               </Link>
               <Link to="/ai-agents" className="text-gray-300 hover:text-white transition-colors text-base font-bold">
                 AI Agents
@@ -68,11 +68,11 @@ export default function Navbar() {
           <div className="md:hidden mt-4 pb-3">
             <div className="flex flex-col space-y-4">
               <Link 
-                to="/market-insights" 
+                to="/business-insights" 
                 className="text-gray-300 hover:text-white transition-colors text-base font-bold py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Market Insights
+                Business Insights
               </Link>
               <Link 
                 to="/ai-agents" 

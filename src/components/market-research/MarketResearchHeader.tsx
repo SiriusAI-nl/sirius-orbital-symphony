@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { useMarketResearch } from '@/hooks/use-market-research';
 
-const MarketResearchHeader = () => {
+const BusinessInsightsHeader = () => {
   const { query } = useMarketResearch();
 
   return (
@@ -14,9 +14,9 @@ const MarketResearchHeader = () => {
         <SidebarTrigger className="lg:hidden" />
         <div>
           <h1 className="text-2xl font-bold bg-gradient-to-r from-white via-sirius-200 to-sirius-400 text-transparent bg-clip-text">
-            {query || "New Insight"}
+            {query || "New Business Insight"}
           </h1>
-          <p className="text-gray-400">Market Intelligence Analysis</p>
+          <p className="text-gray-400">Business Intelligence Analysis</p>
         </div>
       </div>
       
@@ -31,4 +31,4 @@ const MarketResearchHeader = () => {
   );
 };
 
-export default MarketResearchHeader;
+export default BusinessInsightsHeader;
