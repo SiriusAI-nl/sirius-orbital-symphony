@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { SearchIcon, ArrowRightIcon, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -27,8 +26,8 @@ const MarketSearch = () => {
     // Simulate search delay
     setTimeout(() => {
       setIsSearching(false);
-      toast.success(`Market analysis for "${query}" initialized`);
-      navigate('/market-research-console', { state: { query } });
+      toast.success(`Market insight analysis for "${query}" initialized`);
+      navigate('/market-insights-console', { state: { query } });
     }, 1500);
   };
 
@@ -40,7 +39,7 @@ const MarketSearch = () => {
       <section className="flex-1 flex flex-col items-center justify-center py-12 px-4 relative z-10">
         <div className="max-w-3xl mx-auto w-full text-center relative">
           <div 
-            className="absolute inset-0 pointer-events-none z-0" // Added z-0 to ensure it stays behind content
+            className="absolute inset-0 pointer-events-none z-0"
             style={{
               backgroundImage: `url('/lovable-uploads/8c9dfb81-5f70-4b6d-9813-ddf2331aa0f8.png')`,
               backgroundSize: 'cover',
@@ -58,10 +57,10 @@ const MarketSearch = () => {
                 <Sparkles className="w-5 h-5 text-sirius-400" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text">
-                Marketing Intelligence
+                Market Intelligence
               </h1>
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-                Discover trends, analyze competitors, and find new opportunities with AI-powered market research
+                Discover insights, analyze competitors, and find new opportunities with AI-powered market intelligence
               </p>
             </div>
             

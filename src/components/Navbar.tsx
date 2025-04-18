@@ -12,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-space-900/70 backdrop-blur supports-backdrop-blur:bg-space-900/60 py-2">  {/* Restored py-2 to original height */}
+    <nav className="fixed top-0 left-0 w-full z-50 bg-space-900/70 backdrop-blur supports-backdrop-blur:bg-space-900/60 py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -28,8 +28,8 @@ export default function Navbar() {
           
           <div className="hidden md:block">
             <div className="flex items-center space-x-6">
-              <Link to="/market-research" className="text-gray-300 hover:text-white transition-colors text-base font-bold">
-                Market Research
+              <Link to="/market-insights" className="text-gray-300 hover:text-white transition-colors text-base font-bold">
+                Market Insights
               </Link>
               <Link to="/ai-agents" className="text-gray-300 hover:text-white transition-colors text-base font-bold">
                 AI Agents
@@ -68,11 +68,11 @@ export default function Navbar() {
           <div className="md:hidden mt-4 pb-3">
             <div className="flex flex-col space-y-4">
               <Link 
-                to="/market-research" 
+                to="/market-insights" 
                 className="text-gray-300 hover:text-white transition-colors text-base font-bold py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Market Research
+                Market Insights
               </Link>
               <Link 
                 to="/ai-agents" 

@@ -14,16 +14,16 @@ const MarketResearchHeader = () => {
         <SidebarTrigger className="lg:hidden" />
         <div>
           <h1 className="text-2xl font-bold bg-gradient-to-r from-white via-sirius-200 to-sirius-400 text-transparent bg-clip-text">
-            {query || "New Research"}
+            {query || "New Insight"}
           </h1>
-          <p className="text-gray-400">Marketing Intelligence Analysis</p>
+          <p className="text-gray-400">Market Intelligence Analysis</p>
         </div>
       </div>
       
       <div className="max-w-md bg-space-800/40 rounded-lg border border-border/50 flex items-center px-3">
         <Search className="h-4 w-4 shrink-0 opacity-50 mr-2" />
         <Input 
-          placeholder="Search your research..." 
+          placeholder="Search your insights..." 
           className="h-10 bg-transparent border-none focus-visible:ring-0 focus-visible:ring-offset-0"
         />
       </div>

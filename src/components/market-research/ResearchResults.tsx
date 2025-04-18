@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Database, TrendingUp, Sparkles } from 'lucide-react';
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -19,13 +18,13 @@ const ResearchResults = ({ isLoading, researchResults, websites }: ResearchResul
             <div className="py-20 flex flex-col items-center justify-center">
               <div className="h-12 w-12 rounded-full border-4 border-t-sirius-500 border-sirius-500/30 animate-spin mb-4"></div>
               <h3 className="text-xl font-medium text-white">Analyzing Data</h3>
-              <p className="text-gray-400 mt-2">Our LLM research agents are conducting deep analysis...</p>
+              <p className="text-gray-400 mt-2">Our LLM insight agents are conducting deep analysis...</p>
             </div>
           ) : (
             <>
               <div className="flex items-center space-x-2 mb-4">
                 <Sparkles className="w-5 h-5 text-sirius-400" />
-                <h3 className="text-lg font-medium text-white">Research Analysis</h3>
+                <h3 className="text-lg font-medium text-white">Market Insights</h3>
               </div>
               <div className="prose prose-invert max-w-none mb-6">
                 <pre className="bg-space-900/50 p-4 rounded-lg overflow-auto text-sm border border-border/50">

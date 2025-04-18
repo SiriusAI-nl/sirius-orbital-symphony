@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Activity, Users, TrendingUp, BarChart2, Layers, FileText, MessageSquare, ChevronRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -36,14 +35,14 @@ const SidebarItems = ({
 }: SidebarItemsProps) => {
   const menuItems = [
     { 
-      title: 'Research Pipeline', 
+      title: 'Insight Pipeline', 
       icon: <Activity className="mr-2 h-5 w-5 text-sirius-400" />,
       items: [
         { label: 'Keywords', icon: <Activity className="mr-2 h-4 w-4 text-sirius-400" /> },
         { label: 'Competition', icon: <Users className="mr-2 h-4 w-4 text-sirius-400" /> },
         { label: 'Trends', icon: <TrendingUp className="mr-2 h-4 w-4 text-sirius-400" /> },
         { label: 'Analysis', icon: <BarChart2 className="mr-2 h-4 w-4 text-sirius-400" /> },
-        { label: 'Deep Research', icon: <Layers className="mr-2 h-4 w-4 text-sirius-400" /> },
+        { label: 'Deep Insights', icon: <Layers className="mr-2 h-4 w-4 text-sirius-400" /> },
         { label: 'Reports', icon: <FileText className="mr-2 h-4 w-4 text-sirius-400" /> }
       ]
     },
@@ -59,8 +58,8 @@ const SidebarItems = ({
       {menuItems.map((menuGroup, index) => (
         <SidebarGroup key={index} className="mb-4">
           <Collapsible 
-            open={openSections[menuGroup.title === 'Research Pipeline' ? 'pipeline' : 'history']}
-            onOpenChange={() => onSectionToggle(menuGroup.title === 'Research Pipeline' ? 'pipeline' : 'history')}
+            open={openSections[menuGroup.title === 'Insight Pipeline' ? 'pipeline' : 'history']}
+            onOpenChange={() => onSectionToggle(menuGroup.title === 'Insight Pipeline' ? 'pipeline' : 'history')}
             className="w-full"
           >
             <CollapsibleTrigger className="flex items-center justify-between w-full px-4 py-3 text-base bg-space-800/40 hover:bg-space-800/60 rounded-lg transition-colors group">
@@ -74,7 +73,7 @@ const SidebarItems = ({
               <SidebarMenu>
                 {menuGroup.items.map((item, itemIndex) => (
                   <SidebarMenuItem key={itemIndex}>
-                    {menuGroup.title === 'Research Pipeline' ? (
+                    {menuGroup.title === 'Insight Pipeline' ? (
                       <SidebarMenuButton className="group/submenu relative hover:bg-space-800/40 rounded-lg transition-all duration-200">
                         <div className="flex items-center px-4 py-2">
                           {'icon' in item && item.icon}
