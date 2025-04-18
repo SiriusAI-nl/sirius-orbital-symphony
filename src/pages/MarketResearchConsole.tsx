@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { PlusCircle, Search } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -132,13 +133,13 @@ Next, I plan to investigate user demographics and then identify the major brands
     <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
       
-      <div className="flex-1 flex flex-col mt-16 mb-auto">
+      <div className="flex-1 flex overflow-hidden">
         <SidebarProvider defaultOpen={true}>
-          <div className="flex flex-1 h-[calc(100vh-10rem)]">
-            <Sidebar className="border-r border-border h-full">
+          <div className="flex flex-1 w-full mt-16 mb-16">
+            <Sidebar className="border-r border-border">
               <div className="flex flex-col h-full">
-                <ScrollArea className="flex-1">
-                  <SidebarContent className="py-4">
+                <SidebarContent className="py-4 flex-1">
+                  <ScrollArea className="h-full">
                     <SidebarItems
                       chatHistory={chatHistory}
                       openSections={openSections}
@@ -146,8 +147,8 @@ Next, I plan to investigate user demographics and then identify the major brands
                       activeSession={activeSession}
                       onSessionSelect={setActiveSession}
                     />
-                  </SidebarContent>
-                </ScrollArea>
+                  </ScrollArea>
+                </SidebarContent>
                 
                 <SidebarFooter className="p-4 border-t border-border bg-sidebar">
                   <Button 
@@ -162,8 +163,8 @@ Next, I plan to investigate user demographics and then identify the major brands
               </div>
             </Sidebar>
             
-            <div className="flex-1 overflow-hidden flex flex-col">
-              <div className="flex items-center justify-between p-4 border-b border-border">
+            <div className="flex-1 overflow-auto flex flex-col">
+              <div className="flex items-center justify-between p-4 border-b border-border sticky top-16 bg-background z-10">
                 <div className="flex items-center space-x-4">
                   <SidebarTrigger className="lg:hidden" />
                   <div>
