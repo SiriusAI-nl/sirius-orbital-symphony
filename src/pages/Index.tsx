@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   SearchIcon,
@@ -39,11 +40,11 @@ const Index = () => {
                     backgroundImage: `url('/lovable-uploads/155c3c45-0594-4b1e-83cb-7f8f1096664e.png')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    opacity: 0.6,
-                    filter: 'blur(1px)',
+                    opacity: 0.85, // Increased opacity from 0.6 to 0.85
+                    filter: 'blur(0px)', // Removed blur for better visibility
                   }}
                 >
-                  <div className="absolute inset-0 bg-space-900/40 backdrop-blur-sm"></div>
+                  <div className="absolute inset-0 bg-space-900/20 backdrop-blur-sm"></div> {/* Reduced overlay darkness */}
                 </div>
               </div>
             </div>
