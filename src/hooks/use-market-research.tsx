@@ -47,15 +47,15 @@ export const useMarketResearch = () => {
 
   const generateFakeWebsites = () => {
     const fakeWebsites = [
-      'marketresearch.com',
-      'industrytrends.org',
+      'marketintel.com',
+      'industryinsights.org',
       'competitoranalysis.co',
       'statista.com',
       'keywordinsights.net',
       'marketshare.io',
       'consumertrends.com',
       'competitorspy.org',
-      'marketingdata.co',
+      'insightdata.co',
       'trendreports.com',
       'insightplatform.io',
       'analyticsreports.net',
@@ -68,10 +68,10 @@ export const useMarketResearch = () => {
 
   const generateFakeResearchResults = () => {
     const fakeResults = `
-# ${query} - Market Research Analysis
+# ${query} - Market Intelligence Analysis
 
 ## Initial Findings
-I'm starting my research by looking into the different aspects of ${query} that would be relevant for marketing intelligence.
+I'm starting my analysis by looking into the different aspects of ${query} that would be relevant for market intelligence.
 
 ## Market Overview
 Currently focusing on the market landscape to understand its dynamics and opportunities, especially when analyzing the competitive environment. Looking into the different segments and potential growth areas.
